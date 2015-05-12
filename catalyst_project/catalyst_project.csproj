@@ -74,14 +74,23 @@
     <Compile Include="Model\BoundaryShape.cs" />
     <Compile Include="Model\CatalystType.cs" />
     <Compile Include="Model\Manufacturer.cs" />
+    <Compile Include="Model\ModelType.cs" />
     <Compile Include="Model\MonolithMaterial.cs" />
+    <Compile Include="Model\SimulationTool.cs" />
     <Compile Include="Model\WashcoatCatalyticComposition.cs" />
     <Compile Include="ViewModel\GeneralInformatoinModelView.cs" />
     <Compile Include="ViewModel\MainAppViewModel.cs" />
+    <Compile Include="View\CombineCatalystWindow.xaml.cs">
+      <DependentUpon>CombineCatalystWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\OpenCatalystWindow.xaml.cs">
       <DependentUpon>OpenCatalystWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CombineCatalystWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

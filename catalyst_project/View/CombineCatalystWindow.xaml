@@ -1,0 +1,33 @@
+﻿<Window x:Class="catalyst_project.View.CombineCatalystWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CombineCatalystWindow" Height="500" Width="600" WindowStartupLocation="CenterScreen">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Search part-->
+        <Label Grid.Row="0" Grid.Column="0" Content="Search By" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox Name="cmb_search_by" Grid.Row="0" Grid.Column="1" Height="25" Margin="5,0,0,0">
+            <ComboBoxItem Content="ID"/>
+            <ComboBoxItem Content="Catalyst Number"/>           
+        </ComboBox>
+        <TextBox Name="txb_search_value" Height="25" Grid.Row="0" Margin="5,0,0,0" Grid.Column="2"/>
+        <Button Name="btn_search_catalyst" Content="Search" Grid.Row="0" Grid.Column="3" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        
+        <!--Data Grid to show search result-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="4" Background="LightBlue"></Grid>
+        <!--Choose Button-->       
+        <Button Name="btn_choose_catalyst" Content="Choose Catalyst" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Click="btn_choose_catalyst_Click"/>
+        
+    </Grid>
+</Window>
