@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class EngineManufacturer
+    class SourceOfData
     {
         private int _Id;
-        private string _Manufacturer;
+        private string _Source;
 
-        public EngineManufacturer(int id, string manufacturer)
+        public SourceOfData(int id, string source)
         {
             Id = id;
-            Manufacturer = manufacturer;
+            Source = source;
 
         }
 
@@ -31,15 +31,15 @@ namespace catalyst_project.Model
             }
         }
 
-        public string Manufacturer
+        public string Source
         {
             get
             {
-                return _Manufacturer;
+                return _Source;
             }
             set
             {
-                _Manufacturer = value;
+                _Source = value;
             }
         }
 

@@ -74,13 +74,15 @@
     <Compile Include="Model\ApplicationFieldTestbench.cs" />
     <Compile Include="Model\BoundaryShape.cs" />
     <Compile Include="Model\CatalystType.cs" />
+    <Compile Include="Model\CristallineWashcoatComponentFunction.cs" />
     <Compile Include="Model\Emission.cs" />
-    <Compile Include="Model\EmissionLegislation.cs" />
-    <Compile Include="Model\EngineManufacturer.cs" />
     <Compile Include="Model\Manufacturer.cs" />
     <Compile Include="Model\ModelType.cs" />
     <Compile Include="Model\MonolithMaterial.cs" />
+    <Compile Include="Model\PreciousMetalLoading.cs" />
     <Compile Include="Model\SimulationTool.cs" />
+    <Compile Include="Model\SourceOfData.cs" />
+    <Compile Include="Model\SourceOfMeasurement.cs" />
     <Compile Include="Model\SteadyStateLegislation.cs" />
     <Compile Include="Model\TransientLegislation.cs" />
     <Compile Include="Model\WashcoatCatalyticComposition.cs" />
@@ -91,6 +93,9 @@
     </Compile>
     <Compile Include="View\OpenCatalystWindow.xaml.cs">
       <DependentUpon>OpenCatalystWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UniformGridTest.xaml.cs">
+      <DependentUpon>UniformGridTest.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AdminWindow.xaml">
       <SubType>Designer</SubType>
@@ -145,6 +150,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\OpenCatalystWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UniformGridTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

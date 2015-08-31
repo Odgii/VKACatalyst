@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class ApplicationField : INotifyPropertyChanged
+    public class PreciousMetalLoading: INotifyPropertyChanged
     {
-        public int _Id;
-        public string _Name;
         public bool _IsChecked;
-
+        public string  _Name;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ApplicationField(bool isChecked, int id, string name)
+        public PreciousMetalLoading(bool isChecked, String name)
         {
-            IsChecked = isChecked;
-            Id = id;
-            Name = name;
+             IsChecked = isChecked;
+             _Name = name;
         }
+
 
         public bool IsChecked
         {
-            get
+            get 
             {
                 return _IsChecked;
             }
@@ -37,38 +35,26 @@ namespace catalyst_project.Model
             }
         }
 
-        public int Id
-        {
-            get
-            {
-                return _Id;
-            }
-
-            set
-            {
-                _Id = value;
-                OnPropertyChanged("Id");
-            }
-        }
-
         public string Name
         {
             get
             {
                 return _Name;
             }
-
             set
             {
                 _Name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged("WashcoatValue");
             }
         }
 
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
+            {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+                
         }
     }
 }

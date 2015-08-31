@@ -21,7 +21,6 @@ namespace catalyst_project.ViewModel
         private ObservableCollection<CatalystType> _CatalystTypes;
         private ObservableCollection<AgingProcedure> _AgingProcedures;
         private ObservableCollection<BoundaryShape> _BoundaryShapes;
-        private ObservableCollection<ApplicationField> _ApplicationFields;
         
         public MainAppViewModel() 
         {
@@ -66,13 +65,6 @@ namespace catalyst_project.ViewModel
             _BoundaryShapes.Add(new BoundaryShape(1, "Cylinder"));
             _BoundaryShapes.Add(new BoundaryShape(2, "Half-Cylinder"));
             _BoundaryShapes.Add(new BoundaryShape(3, "Oval"));
-
-            _ApplicationFields = new ObservableCollection<ApplicationField>();
-            _ApplicationFields.Add(new ApplicationField(false, 1, "Offroad"));
-            _ApplicationFields.Add(new ApplicationField(false, 2, "Onroad"));
-            _ApplicationFields.Add(new ApplicationField(true, 3, "Passenger Car"));
-            _ApplicationFields.Add(new ApplicationField(false, 4, "Light Duty"));
-            _ApplicationFields.Add(new ApplicationField(true, 5, "Medium Duty"));
 
         }
 
@@ -153,14 +145,6 @@ namespace catalyst_project.ViewModel
             get 
             {
                 return _BoundaryShapes;
-            }
-        }
-
-        public ObservableCollection<ApplicationField> ApplicationFields
-        {
-            get 
-            {
-                return _ApplicationFields;
             }
         }
 
