@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class SourceOfMeasurement
+    public class SourceOfMeasurement
     {
         private int _Id;
         private string _Source;
