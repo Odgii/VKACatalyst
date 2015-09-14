@@ -11,17 +11,32 @@ namespace catalyst_project.Model
     {
         public bool _IsChecked;
         public string _WashcoatValue;
+        public int _Id;
         public bool _NeedPreciousMetal;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public WashcoatCatalyticComposition(bool isChecked, String washcoatValue, bool needPreciousMetal)
+        public WashcoatCatalyticComposition(bool isChecked, int id, String washcoatValue, bool needPreciousMetal)
         {
              IsChecked = isChecked;
              WashcoatValue = washcoatValue;
              NeedPreciousMetal = needPreciousMetal;
+             Id = id;
         }
 
+        public int Id
+        {
+            get
+            {
+                return _Id;
+            }
+
+            set
+            {
+                _Id = value;
+                OnPropertyChanged("Id");
+            }
+        }
 
         public bool IsChecked
         {

@@ -10,13 +10,15 @@ namespace catalyst_project.Model
     public class PreciousMetalLoading: INotifyPropertyChanged
     {
         public bool _IsChecked;
+        public int _Id;
         public string  _Name;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public PreciousMetalLoading(bool isChecked, String name)
+        public PreciousMetalLoading(bool isChecked, int id, string name)
         {
-             IsChecked = isChecked;
+             _Id = id;
+             _IsChecked = isChecked;
              _Name = name;
         }
 
@@ -47,6 +49,20 @@ namespace catalyst_project.Model
                 OnPropertyChanged("WashcoatValue");
             }
         }
+
+        public int Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                _Id = value;
+                OnPropertyChanged("Id");
+            }
+        }
+
 
         private void OnPropertyChanged(string propertyName)
         {

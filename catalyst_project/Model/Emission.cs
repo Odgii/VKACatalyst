@@ -7,36 +7,19 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class Emission : INotifyPropertyChanged
+    public class Emission 
     {
         public int _Id;
         public string _Name;
-        public bool _IsChecked;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Emission(bool isChecked, int id, string name)
+        public Emission(int id, string name)
         {
-            IsChecked = isChecked;
             Id = id;
             Name = name;
         }
-
-        public bool IsChecked
-        {
-            get
-            {
-                return _IsChecked;
-            }
-
-            set
-            {
-                _IsChecked = value;
-                OnPropertyChanged("IsChecked");
-            }
-        }
-
         public int Id
         {
             get
