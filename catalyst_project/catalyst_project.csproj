@@ -49,7 +49,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLite.NET">
+      <HintPath>bin\Debug\SQLite.NET.0.21_x68_dll\SQLite.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data">
       <Private>True</Private>
@@ -73,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="Database\DBConnection.cs" />
     <Compile Include="Database\PopulateDropdownsFromDB.cs" />
+    <Compile Include="Database\SqliteDBConnection.cs" />
     <Compile Include="Model\AgingProcedure.cs" />
     <Compile Include="Model\ApplicationField.cs" />
     <Compile Include="Model\ApplicationFieldTestbench.cs" />

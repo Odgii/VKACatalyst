@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Collections.ObjectModel;
 using System.Windows;
+using Finisar.SQLite;
 
 namespace catalyst_project.Database
 {
@@ -17,7 +18,6 @@ namespace catalyst_project.Database
             Initialize();
             
         }
-
 
         void Initialize() {
             string connectionString = "server=localhost;userid=root;password=rootpassword;database=catalyst_db;";
@@ -60,24 +60,28 @@ namespace catalyst_project.Database
                 return false;
             }
         }
- 
-        public void Insert(string query)
-        {
 
-            if (this.OpenConnection() == true)
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-                this.CloseConnection();
-            }
+        public bool UserExist(string username, string password) {
+            return true;
         }
 
-        public void Update(string query)
+        public void Insert(MySqlCommand cmd)
         {
-            if (this.OpenConnection() == true)
+            if(this.OpenConnection() == true)
             {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandText = query;
+                cmd.Connection = connection;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Hurray");
+                this.CloseConnection();
+
+            }
+           
+        }
+
+        public void Update(MySqlCommand cmd)
+        {
+            if(this.OpenConnection() == true)
+            {
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();

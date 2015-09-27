@@ -15,11 +15,12 @@ namespace catalyst_project.Database
 
         public PopulateDropdownsFromDB() {
             database = new DBConnection();
+         //   SqliteDBConnection s = new SqliteDBConnection();
         }
         public ObservableCollection<Manufacturer> populateManufacturers() 
         {
             ObservableCollection<Manufacturer> manufacturers = new ObservableCollection<Manufacturer>();
-            List<string>[] list = database.Select("catalystmanufacturer","select * from catalystmanufacturer ");
+            List<string>[] list = database.Select("catalystmanufacturer", "select * from catalystmanufacturer ");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
