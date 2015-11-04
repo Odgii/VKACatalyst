@@ -21,6 +21,7 @@ namespace catalyst_project.Database
 
         void Initialize() {
             string connectionString = "server=localhost;userid=root;password=rootpassword;database=catalyst_db;";
+           // string connectionString = "Server=137.226.225.174;Database=catalyst_db;Uid=root;Pwd=catalyst-rootpass;";
             connection = new MySqlConnection(connectionString);
         }
 
