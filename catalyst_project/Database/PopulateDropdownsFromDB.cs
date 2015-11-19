@@ -90,6 +90,22 @@ namespace catalyst_project.Database
             }
             return agingProcedures;
         }
+
+        public ObservableCollection<AgingStatus> populateAgingStatuses()
+        {
+            ObservableCollection<AgingStatus> agingStatuses = new ObservableCollection<AgingStatus>();
+            List<string>[] list = database.Select("AgingStatus", "select * from agingstatus");
+            for (int i = 0; i < list[0].Count(); i++)
+            {
+                string idstring = list[0][i];
+                int id = Convert.ToInt32(idstring);
+                string name = list[1][i];
+                AgingStatus status = new AgingStatus(id, name);
+                agingStatuses.Add(status);
+            }
+            return agingStatuses;
+        }
+
         public ObservableCollection<BoundaryShape> populateBoundaryShapes() 
         {
             ObservableCollection<BoundaryShape> boundaryShapes = new ObservableCollection<BoundaryShape>();

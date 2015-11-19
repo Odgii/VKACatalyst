@@ -11,7 +11,6 @@ namespace catalyst_project.Database
     class SqliteDBConnection
     {
         private SQLiteConnection sql_con;
-        private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DB;
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class MonolithMaterial
+     class MonolithMaterial
     {
-        public int _Id;
-        public string _Material;
+        private int _Id;
+        private string _Material;
 
         public MonolithMaterial(int id, string material)
         {

@@ -7,12 +7,12 @@ using System.ComponentModel;
 
 namespace catalyst_project.Model
 {
-    public class WashcoatCatalyticComposition : INotifyPropertyChanged
+   public class WashcoatCatalyticComposition : INotifyPropertyChanged
     {
-        public bool _IsChecked;
-        public string _WashcoatValue;
-        public int _Id;
-        public bool _NeedPreciousMetal;
+        private bool _IsChecked;
+        private string _WashcoatValue;
+        private int _Id;
+        private bool _NeedPreciousMetal;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

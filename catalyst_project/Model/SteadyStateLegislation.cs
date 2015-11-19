@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class SteadyStateLegislation : INotifyPropertyChanged
+    class SteadyStateLegislation : INotifyPropertyChanged
     {
-        public int _Id;
-        public string _Legislation;
-        public bool _IsChecked;
+        private int _Id;
+        private string _Legislation;
+        private bool _IsChecked;
 
 
         public event PropertyChangedEventHandler PropertyChanged;

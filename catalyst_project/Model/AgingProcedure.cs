@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class AgingProcedure
+    class AgingProcedure
     {
         private int _Id;
         private string _Procedure;

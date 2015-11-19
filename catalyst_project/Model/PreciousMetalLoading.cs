@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class PreciousMetalLoading: INotifyPropertyChanged
+     class PreciousMetalLoading: INotifyPropertyChanged
     {
-        public bool _IsChecked;
-        public int _Id;
-        public string  _Name;
+        private bool _IsChecked;
+        private int _Id;
+        private string _Name;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

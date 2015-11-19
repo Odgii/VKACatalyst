@@ -79,7 +79,9 @@
     <Compile Include="Database\DBConnection.cs" />
     <Compile Include="Database\PopulateDropdownsFromDB.cs" />
     <Compile Include="Database\SqliteDBConnection.cs" />
+    <Compile Include="Database\UpdateDropdownsToDB.cs" />
     <Compile Include="Model\AgingProcedure.cs" />
+    <Compile Include="Model\AgingStatus.cs" />
     <Compile Include="Model\ApplicationField.cs" />
     <Compile Include="Model\ApplicationFieldTestbench.cs" />
     <Compile Include="Model\BoundaryShape.cs" />
@@ -101,6 +103,9 @@
     </Compile>
     <Compile Include="View\OpenCatalystWindow.xaml.cs">
       <DependentUpon>OpenCatalystWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchWindow.xaml.cs">
+      <DependentUpon>SearchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UniformGridTest.xaml.cs">
       <DependentUpon>UniformGridTest.xaml</DependentUpon>
@@ -158,6 +163,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\OpenCatalystWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SearchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

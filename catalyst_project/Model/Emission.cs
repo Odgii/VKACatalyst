@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class Emission 
+     class Emission 
     {
-        public int _Id;
-        public string _Name;
+        private int _Id;
+        private string _Name;
 
 
         public event PropertyChangedEventHandler PropertyChanged;

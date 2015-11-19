@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    public class CristallineWashcoatComponentFunction
+     class CristallineWashcoatComponentFunction
     {
         
         private int _Id;
