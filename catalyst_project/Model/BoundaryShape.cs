@@ -17,6 +17,12 @@ namespace catalyst_project.Model
             Shape = shape;    
         }
 
+        public BoundaryShape()
+        { 
+        
+        }
+
+
         public int Id
         {
             get

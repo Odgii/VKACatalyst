@@ -262,5 +262,19 @@ namespace catalyst_project.Database
             }
             return sourceOfMeasurements;
         }
+
+        public ObservableCollection<UserRole> populateUserRoles()
+        {
+            ObservableCollection<UserRole> roles = new ObservableCollection<UserRole>();
+            List<string>[] list = database.Select("user_role", "select * from user_role");
+            for (int i = 0; i < list[0].Count(); i++)
+            {
+                int id = Convert.ToInt32(list[0][i]);
+                string role = list[1][i];
+                UserRole r = new UserRole(id, role);
+                roles.Add(r);
+            }
+            return roles;
+        }
     }
 }

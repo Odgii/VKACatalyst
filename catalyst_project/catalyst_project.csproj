@@ -79,6 +79,7 @@
     <Compile Include="Database\DBConnection.cs" />
     <Compile Include="Database\PopulateDropdownsFromDB.cs" />
     <Compile Include="Database\SqliteDBConnection.cs" />
+    <Compile Include="Database\PopulateAdminPanel.cs" />
     <Compile Include="Database\UpdateDropdownsToDB.cs" />
     <Compile Include="Model\AgingProcedure.cs" />
     <Compile Include="Model\AgingStatus.cs" />
@@ -97,10 +98,13 @@
     <Compile Include="Model\SourceOfMeasurement.cs" />
     <Compile Include="Model\SteadyStateLegislation.cs" />
     <Compile Include="Model\TransientLegislation.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserRole.cs" />
     <Compile Include="Model\WashcoatCatalyticComposition.cs" />
     <Compile Include="View\CombineCatalystWindow.xaml.cs">
       <DependentUpon>CombineCatalystWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\History.cs" />
     <Compile Include="View\OpenCatalystWindow.xaml.cs">
       <DependentUpon>OpenCatalystWindow.xaml</DependentUpon>
     </Compile>

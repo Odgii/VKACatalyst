@@ -72,7 +72,7 @@ namespace catalyst_project.Database
             {
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Hurray");
+                MessageBox.Show("Insert Hurray");
                 this.CloseConnection();
 
             }
@@ -85,17 +85,19 @@ namespace catalyst_project.Database
             {
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("Update Hurray");
                 this.CloseConnection();
             }
         
         }
 
-        public void Delete(string query)
+        public void Delete(MySqlCommand cmd)
         {
             if (this.OpenConnection() == true)
             {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("Delete Hurray");
                 this.CloseConnection();
             }
         }

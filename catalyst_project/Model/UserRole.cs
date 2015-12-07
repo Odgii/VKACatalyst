@@ -6,46 +6,45 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-     class MonolithMaterial
+    class UserRole
     {
         private int _Id;
-        private string _Material;
+        private string _Role;
 
-        public MonolithMaterial(int id, string material)
-        {
-            _Id = id;
-            _Material = material;
+        public UserRole()
+        { 
+        
         }
 
-        public MonolithMaterial()
-        { 
+        public UserRole(int id, string role)
+        {
+            Id = id;
+            Role = role;
         }
 
         public int Id
         {
-            get
-            {
+            get {
                 return _Id;
-            }
-
-            set 
-            {
-                _Id = value;
-            }
-        }
-
-        public string Material
-        {
-            get
-            {
-                return _Material;
             }
 
             set
             {
-                _Material = value;
+                _Id = value; 
             }
         }
 
+        public string Role
+        {
+            get
+            {
+                return _Role;
+            }
+            set
+            {
+                _Role = value;
+            }
+
+        }
     }
 }

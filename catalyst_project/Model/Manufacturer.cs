@@ -23,6 +23,11 @@ namespace catalyst_project.Model
              Name = name;
         }
 
+        public Manufacturer()
+        { 
+        
+        }
+
         public bool IsChecked
         {
             get

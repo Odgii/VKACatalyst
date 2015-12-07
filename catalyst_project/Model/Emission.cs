@@ -12,9 +12,6 @@ namespace catalyst_project.Model
         private int _Id;
         private string _Name;
 
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public Emission(int id, string name)
         {
             Id = id;
@@ -30,7 +27,6 @@ namespace catalyst_project.Model
             set
             {
                 _Id = value;
-                OnPropertyChanged("Id");
             }
         }
 
@@ -44,14 +40,8 @@ namespace catalyst_project.Model
             set
             {
                 _Name = value;
-                OnPropertyChanged("Name");
             }
         }
 
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

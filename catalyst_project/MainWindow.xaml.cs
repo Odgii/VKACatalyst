@@ -1,4 +1,5 @@
 ﻿using catalyst_project.Database;
+using catalyst_project.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,8 @@ namespace catalyst_project
 
         private void LoginClicked(object sender, RoutedEventArgs e)
         {
-           catalyst_project.View.MainApplication new_app = new View.MainApplication();
+     //    MainApplication new_app = MainApplication();
+           AdminWindow new_app = new AdminWindow();
            new_app.Show();
            this.Close();
         }
