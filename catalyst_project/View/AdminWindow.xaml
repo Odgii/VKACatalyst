@@ -248,28 +248,290 @@
                 </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_appfield" Header="Application Field" Width="170" HorizontalAlignment="Right">
-                hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_appfields" SelectionChanged="grid_appfields_SelectionChanged"  SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Application Fields" Width="250" Binding="{Binding Name}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_app_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Application Field ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_appfield_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Application Field" Width="200"/>
+                            <TextBox Width="200" Name="txb_appfield"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_app_add" Margin="5" Width="50" Height="30" Background="Green" Click="btn_app_Click"/>
+                            <Button Content="Update" Name="btn_app_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btn_app_Click"/>
+                            <Button Content="Clear" Name="btn_app_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btn_app_Click"/>
+                            <Button Content="Delete" Name="btn_app_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btn_app_Click"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_agingprocedure" Header="Aging Procedure" Width="170" HorizontalAlignment="Right">
-                hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_procedures" SelectionChanged="grid_procedures_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Procedure ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Aging Procedure" Width="250" Binding="{Binding Procedure}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_aging_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Aging Procedure ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_proc_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Aging Procedure" Width="200"/>
+                            <TextBox Width="200" Name="txb_proc"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_proc_add" Margin="5" Width="50" Height="30" Background="Green" Click="btns_proc_Click"/>
+                            <Button Content="Update" Name="btn_proc_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_proc_Click"/>
+                            <Button Content="Clear" Name="btn_proc_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_proc_Click"/>
+                            <Button Content="Delete" Name="btn_proc_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btns_proc_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_washcoatmat" Header="Washcoat Material" Width="170" HorizontalAlignment="Right">
-                hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="570"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_washcoats" SelectionChanged="grid_washcoats_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Washcoat ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Washcoat Material" Width="250" Binding="{Binding  WashcoatValue}" />
+                                <DataGridCheckBoxColumn Header="Has Precious Metal" Width="150" Binding="{Binding NeedPreciousMetal}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_washcoat_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Washcoat ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_washcoat_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Washcoat Value" Width="200"/>
+                            <TextBox Width="200" Name="txb_washcoat"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Has Precious Metal" Width="200"/>
+                            <CheckBox  Name="chk_washcoat_metal" Margin="2,10,5,5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_washcoat_add" Margin="5" Width="50" Height="30" Background="Green" Click="btns_washcoat_Click"/>
+                            <Button Content="Update" Name="btn_washcoat_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_washcoat_Click"/>
+                            <Button Content="Clear" Name="btn_washcoat_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_washcoat_Click"/>
+                            <Button Content="Delete" Name="btn_washcoat_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btns_washcoat_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_emission" Header="Emission Legislation" Width="170" HorizontalAlignment="Right">
-                hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_emissions" SelectionChanged="grid_emissions_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Emission ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Emission" Width="250" Binding="{Binding Name}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_emission_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content=" Emission ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_emission_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Emission" Width="200"/>
+                            <TextBox Width="200" Name="txb_emission"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_emission_add" Margin="5" Width="50" Height="30" Background="Green" Click="btns_emission_Click"/>
+                            <Button Content="Update" Name="btn_emission_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_emission_Click"/>
+                            <Button Content="Clear" Name="btn_emission_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_emission_Click"/>
+                            <Button Content="Delete" Name="btn_emission_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btns_emission_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_transient" Header="Transient Legislation Cycle" Width="170" HorizontalAlignment="Right">
-                hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_transients" SelectionChanged="grid_transients_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Transient ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Cycle Certificate" Width="250" Binding="{Binding Legislation}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_transients_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content=" Transient ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_transient_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Cycle Certificate" Width="200"/>
+                            <TextBox Width="200" Name="txb_transient"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_transient_add" Margin="5" Width="50" Height="30" Background="Green" Click="btns_transient_Click"/>
+                            <Button Content="Update" Name="btn_transient_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_transient_Click"/>
+                            <Button Content="Clear" Name="btn_transient_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_transient_Click"/>
+                            <Button Content="Delete" Name="btn_transient_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btns_transient_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_steady" Header="Steady Legislation Cycle" Width="170" HorizontalAlignment="Right">
-                hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_steadys" SelectionChanged="grid_steadys_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Steady ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Cycle Certificate" Width="250" Binding="{Binding Legislation}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_steadys_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content=" Transient ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_steady_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Cycle Certificate" Width="200"/>
+                            <TextBox Width="200" Name="txb_steady"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_steady_add" Margin="5" Width="50" Height="30" Background="Green" Click="btns_steady_Click"/>
+                            <Button Content="Update" Name="btn_steady_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_steady_Click"/>
+                            <Button Content="Clear" Name="btn_steady_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_steady_Click"/>
+                            <Button Content="Delete" Name="btn_steady_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btns_steady_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_modeltype" Header="Model Type" Width="170" HorizontalAlignment="Right">
-                    hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_modeltypes" SelectionChanged="grid_modeltypes_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Model Type ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Model Type" Width="250" Binding="{Binding Type}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_modeltype_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Model Type ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_modeltype_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Model Type" Width="200"/>
+                            <TextBox Width="200" Name="txb_modeltype"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_modeltype_add" Margin="5" Width="50" Height="30" Background="Green" Click="btns_modeltype_Click"/>
+                            <Button Content="Update" Name="btn_modeltype_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_modeltype_Click"/>
+                            <Button Content="Clear" Name="btn_modeltype_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_modeltype_Click"/>
+                            <Button Content="Delete" Name="btn_modeltype_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btns_modeltype_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Visibility="Visible" Name="tb_simulationtool" Header="Simulation Tool" Width="170" HorizontalAlignment="Right">
-                hehehhehehehe
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="430"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid >
+                        <DataGrid Height="570" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_tools" SelectionChanged="grid_tools_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Simulation Tool ID" Width="150" Binding="{Binding Id}" />
+                                <DataGridTextColumn Header="Simulation Tool" Width="250" Binding="{Binding Tool}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_tool_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Simulation Tool ID" Width="200"/>
+                            <TextBox Width="200" Name="txb_tool_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Simulation Tool" Width="200"/>
+                            <TextBox Width="200" Name="txb_tool"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Add" Name="btn_tool_add" Margin="5" Width="50" Height="30" Background="Green" Click="btns_tool_Click"/>
+                            <Button Content="Update" Name="btn_tool_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_tool_Click"/>
+                            <Button Content="Clear" Name="btn_tool_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_tool_Click"/>
+                            <Button Content="Delete" Name="btn_tool_delete" Margin="5" Width="50" Height="30" Background="Red" Click="btns_tool_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Data Approval" Height="30" Width="200" Background="AliceBlue">
 

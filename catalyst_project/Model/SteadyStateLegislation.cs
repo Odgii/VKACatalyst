@@ -16,6 +16,10 @@ namespace catalyst_project.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public SteadyStateLegislation()
+        { 
+        
+        }
         public SteadyStateLegislation(bool isChecked, int id, string steadyStateLeg)
         {
             IsChecked = isChecked;

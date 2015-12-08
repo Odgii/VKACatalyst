@@ -16,6 +16,10 @@ namespace catalyst_project.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public WashcoatCatalyticComposition()
+        { 
+        
+        }
         public WashcoatCatalyticComposition(bool isChecked, int id, String washcoatValue, bool needPreciousMetal)
         {
              IsChecked = isChecked;

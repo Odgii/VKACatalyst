@@ -16,6 +16,11 @@ namespace catalyst_project.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ApplicationField()
+        { 
+        
+        }
+
         public ApplicationField(bool isChecked, int id, string name)
         {
             IsChecked = isChecked;

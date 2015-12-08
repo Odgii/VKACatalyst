@@ -11,6 +11,11 @@ namespace catalyst_project.Model
         private int _Id;
         private string _Tool;
 
+        public SimulationTool()
+        { 
+        
+        }
+
         public SimulationTool(int id, string tool)
         {
             Id = id;

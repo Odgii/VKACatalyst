@@ -11,6 +11,10 @@ namespace catalyst_project.Model
         private int _Id;
         private string _Type;
 
+        public ModelType()
+        { 
+        
+        }
         public ModelType(int id, string type)
         {
             Id = id;

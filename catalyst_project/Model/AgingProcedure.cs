@@ -11,6 +11,10 @@ namespace catalyst_project.Model
         private int _Id;
         private string _Procedure;
 
+        public AgingProcedure()
+        { 
+        
+        }
         public AgingProcedure(int id, string procedure)
         {
             Id = id;

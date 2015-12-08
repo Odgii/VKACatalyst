@@ -12,6 +12,10 @@ namespace catalyst_project.Model
         private int _Id;
         private string _Name;
 
+        public Emission()
+        { 
+        
+        }
         public Emission(int id, string name)
         {
             Id = id;

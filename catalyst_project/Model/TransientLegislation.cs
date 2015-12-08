@@ -16,6 +16,10 @@ namespace catalyst_project.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public TransientLegislation()
+        { 
+        
+        }
         public TransientLegislation(bool isChecked, int id, string transient)
         {
             IsChecked = isChecked;
