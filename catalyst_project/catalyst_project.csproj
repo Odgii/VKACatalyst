@@ -86,6 +86,8 @@
     <Compile Include="Model\ApplicationField.cs" />
     <Compile Include="Model\ApplicationFieldTestbench.cs" />
     <Compile Include="Model\BoundaryShape.cs" />
+    <Compile Include="Model\Bug.cs" />
+    <Compile Include="Model\BugType.cs" />
     <Compile Include="Model\CatalystType.cs" />
     <Compile Include="Model\CristallineWashcoatComponentFunction.cs" />
     <Compile Include="Model\Emission.cs" />

@@ -32,6 +32,7 @@ namespace catalyst_project.View
         private ObservableCollection<SteadyStateLegislation> steadys;
         private ObservableCollection<ModelType> modeltypes;
         private ObservableCollection<SimulationTool> tools;
+        private ObservableCollection<Bug> bugs;
   //      private ObservableCollection<AgingProcedure> agingprocedures;
   //      private ObservableCollection<AgingProcedure> agingprocedures;
 
@@ -56,6 +57,7 @@ namespace catalyst_project.View
             InitSteadys();
             InitModelTypes();
             InitTools();
+            InitBugs();
         }
         /*
          * History Section
@@ -76,6 +78,21 @@ namespace catalyst_project.View
                 int index = grid_history.SelectedIndex;
             }
         }
+
+        private void btns_history_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (btn.Name == "btn_history_search")
+            { 
+            
+            }
+
+            if (btn.Name == "btn_history_filter")
+            { 
+            
+            }
+        }
         //History section ends here
 
         /*
@@ -84,7 +101,7 @@ namespace catalyst_project.View
         private void InitUser()
         {
             users = new ObservableCollection<User>();
-            users = populateAdminFromDb.LoadUser("select * from user");
+            users = populateAdminFromDb.LoadUser();
             grid_user.ItemsSource = users;
         }
 
@@ -113,7 +130,6 @@ namespace catalyst_project.View
             }
         }
 
-
         private void btns_user_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
@@ -129,7 +145,7 @@ namespace catalyst_project.View
                 cmd_user_add.Parameters.AddWithValue("@user_institute", txb_userinstitute.Text);
                 cmd_user_add.Parameters.AddWithValue("@user_registered", DateTime.Now.ToString("dd/MM/yyyy"));
                 dbconnection.Insert(cmd_user_add);
-                users = populateAdminFromDb.LoadUser("select * from user");
+                users = populateAdminFromDb.LoadUser();
                 grid_user.ItemsSource = users;
                 ClearUser();
             }
@@ -145,7 +161,7 @@ namespace catalyst_project.View
                  cmd_user_update.Parameters.AddWithValue("@user_password", txb_userpass.Text);
                  cmd_user_update.Parameters.AddWithValue("@user_id", Convert.ToInt32(txb_userid.Text));
                  dbconnection.Update(cmd_user_update);
-                 users = populateAdminFromDb.LoadUser("select * from user");
+                 users = populateAdminFromDb.LoadUser();
                  grid_user.ItemsSource = users;
                  ClearUser();
             }
@@ -159,7 +175,7 @@ namespace catalyst_project.View
                 cmd_user_delete.CommandText = "delete from user where user_id = @user_id";
                 cmd_user_delete.Parameters.AddWithValue("@user_id", Convert.ToInt32(txb_userid.Text));
                 dbconnection.Delete(cmd_user_delete);
-                users = populateAdminFromDb.LoadUser("select * from user");
+                users = populateAdminFromDb.LoadUser();
                 grid_user.ItemsSource = users;
                 ClearUser();
             }
@@ -401,7 +417,6 @@ namespace catalyst_project.View
             grid_boundary.ItemsSource = shapes;
         }
 
-
         private void grid_boundary_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (grid_boundary.SelectedItems.Count > 0)
@@ -631,6 +646,7 @@ namespace catalyst_project.View
             grid_washcoats.ItemsSource = washcoats;
             
         }
+
         private void grid_washcoats_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (grid_washcoats.SelectedItems.Count > 0)
@@ -710,7 +726,6 @@ namespace catalyst_project.View
             grid_emissions.ItemsSource = emissions;
         }
 
-
         private void grid_emissions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (grid_emissions.SelectedItems.Count > 0)
@@ -784,7 +799,6 @@ namespace catalyst_project.View
             transients = populateDropdownsFromDb.populateTransientLegislations();
             grid_transients.ItemsSource = transients;
         }
-
 
         private void grid_transients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -1075,6 +1089,167 @@ namespace catalyst_project.View
             txb_tool_id.Clear();
             txb_tool.Clear();
         }
-        //simulation tool section ends here
+        //Simulation Tool section ends here
+
+        /*
+         * Bugs section
+         */
+
+        private void InitBugs()
+        {
+            bugs = new ObservableCollection<Bug>();
+            bugs = populateAdminFromDb.LoadBugs();
+            grid_bugs.ItemsSource = bugs;
+        
+        }
+        private void grid_bugs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (grid_bugs.SelectedItems.Count > 0)
+            {
+                Bug selectedBug = new Bug();
+                selectedBug = bugs[grid_bugs.SelectedIndex];
+                txb_bugs_id.Text = selectedBug.Id.ToString();
+                txb_bugs_catalyst_id.Text = selectedBug.CatalystID.ToString();
+                ckb_bugs_fixed.IsChecked = selectedBug.isFixed;
+                txb_bug_comment.Text = selectedBug.Comment; 
+            }
+        }
+
+        private void btns_bug_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (btn.Name == "btn_bug_update")
+            {
+                MySqlCommand cmd_bug_update = new MySqlCommand();
+                cmd_bug_update.CommandText = "update bugs set isFixed = @isFixed where bug_id = @id";
+                cmd_bug_update.Parameters.AddWithValue("@isFixed", ckb_bugs_fixed.IsChecked);
+                cmd_bug_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_bugs_id.Text));
+                dbconnection.Update(cmd_bug_update);
+
+                bugs = populateAdminFromDb.LoadBugs();
+                grid_bugs.ItemsSource = bugs; 
+            }
+            if (btn.Name == "btn_bug_delete")
+            {
+                MySqlCommand cmd_bug_delete = new MySqlCommand();
+                cmd_bug_delete.CommandText = "delete from bugs where bug_id = @id";
+                cmd_bug_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_bugs_id.Text));
+                dbconnection.Delete(cmd_bug_delete);
+
+                bugs = populateAdminFromDb.LoadBugs();
+                grid_bugs.ItemsSource = bugs; 
+            }
+            if (btn.Name == "btn_bugs_search")
+            { 
+                    string selectedVal = cmb_search_bugs_value.Text;
+                    switch(selectedVal){
+                        case "Bug Type": 
+                            ObservableCollection<Bug> searchRes = new ObservableCollection<Bug>();
+
+                            for(int i = 0; i < bugs.Count(); i++)
+                            {
+                                if(bugs[i].BugType == txb_search_bug_value.Text.Trim())
+                                {
+                                    searchRes.Add(bugs[i]);
+                                }
+                            }
+
+                            grid_bugs.ItemsSource = searchRes;
+                            break; 
+                        case "Data Group": 
+
+                            ObservableCollection<Bug> searchRes1 = new ObservableCollection<Bug>();
+
+                            for(int i = 0; i < bugs.Count(); i++)
+                            {
+                                if(bugs[i].DataGroup == txb_search_bug_value.Text.Trim())
+                                {
+                                    searchRes1.Add(bugs[i]);
+                                }
+                            }
+
+                            grid_bugs.ItemsSource = searchRes1;
+                            break; 
+                        case "Error Field Name":
+                            ObservableCollection<Bug> searchRes2 = new ObservableCollection<Bug>();
+
+                            for(int i = 0; i < bugs.Count(); i++)
+                            {
+                                if(bugs[i].ErrorFieldName == txb_search_bug_value.Text.Trim())
+                                {
+                                    searchRes2.Add(bugs[i]);
+                                }
+                            }
+
+                            grid_bugs.ItemsSource = searchRes2;
+                            break; 
+                        case "Fixed": 
+                            ObservableCollection<Bug> searchRes3 = new ObservableCollection<Bug>();
+
+                            for(int i = 0; i < bugs.Count(); i++)
+                            {
+                                if(bugs[i].isFixed == true)
+                                {
+                                    searchRes3.Add(bugs[i]);
+                                }
+                            }
+
+                            grid_bugs.ItemsSource = searchRes3;
+                            break;
+                        case "Not Fixed": 
+                            ObservableCollection<Bug> searchRes4 = new ObservableCollection<Bug>();
+
+                            for(int i = 0; i < bugs.Count(); i++)
+                            {
+                                if(bugs[i].isFixed == true)
+                                {
+                                    searchRes4.Add(bugs[i]);
+                                }
+                            }
+
+                            grid_bugs.ItemsSource = searchRes4;
+                            break; 
+                        case "Show All":
+                            grid_bugs.ItemsSource = bugs; 
+                            break;
+                    }
+            }
+            if (btn.Name == "btn_bugs_filter")
+            { 
+            
+            }
+        }
+
+        private void cmb_search_bugs_value_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedVal = cmb_search_bugs_value.Text;
+            switch (selectedVal)
+            {
+                case "Bug Type":
+                    txb_search_bug_value.IsEnabled = true;
+                    break;
+                case "Data Group":
+                    txb_search_bug_value.IsEnabled = true;
+                    break;
+                case "Error Field Name":
+                    txb_search_bug_value.IsEnabled = true;
+                    break;
+                case "Fixed":
+                    txb_search_bug_value.IsEnabled = false;
+                    break;
+                case "Not Fixed":
+                    txb_search_bug_value.IsEnabled = false;
+                    ;
+                    break;
+                case "Show All":
+                    txb_search_bug_value.IsEnabled = false;
+                    break;
+            }
+
+        }
+
+
+        //Bugs section ends here
     }
 }
