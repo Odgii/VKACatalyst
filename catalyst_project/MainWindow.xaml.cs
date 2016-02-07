@@ -29,10 +29,11 @@ namespace catalyst_project
 
         private void LoginClicked(object sender, RoutedEventArgs e)
         {
-     //    MainApplication new_app = MainApplication();
-           AdminWindow new_app = new AdminWindow();
-           new_app.Show();
-           this.Close();
+             MainApplication new_app = new MainApplication();
+        //   AdminWindow new_app = new AdminWindow();
+         //    SearchWindow new_app = new SearchWindow();
+             new_app.Show();
+             this.Close();
         }
     }
 }

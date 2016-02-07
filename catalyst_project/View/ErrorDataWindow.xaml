@@ -27,10 +27,10 @@
 
         <!--Catalyst ID which has a data error-->
         <Label Grid.Row="1" Grid.Column="0" Content="Catalyst ID"/>
-        <TextBox Name="data_err_catalyst_id" Grid.Row="1" Grid.Column="1" Height="25"/>
+        <TextBox Name="txb_err_catalyst_id" Grid.Row="1" Grid.Column="1" Height="25"/>
         <!--Group-->
         <Label Grid.Row="2" Grid.Column="0" Content="Catalyst Data Group" />
-        <ComboBox Name="catalyst_group_data" Grid.Row="2" Grid.Column="1" Height="25" >
+        <ComboBox Name="cmb_catalyst_datagroup" Grid.Row="2" Grid.Column="1" Height="25" >
             <ComboBoxItem Content="General Information"/>
             <ComboBoxItem Content="Catalyst Characterisation"/>
             <ComboBoxItem Content="Simulation"/>
@@ -40,28 +40,22 @@
 
         <!--Error Field-->
         <Label Grid.Row="3" Grid.Column="0" Content="Error Field Name"/>
-        <TextBox Name="data_error_field" Grid.Row="3" Grid.Column="1" Height="25"/>
+        <TextBox Name="txb_err_field" Grid.Row="3" Grid.Column="1" Height="25" />
 
         <!--Incorrect Value for Error Field-->
         <Label Grid.Row="4" Grid.Column="0" Content="Error Field Current Value"/>
-        <TextBox Name="data_error_field_value" Grid.Row="4" Grid.Column="1" Height="25"/>
+        <TextBox Name="txb_err_field_curr_value" Grid.Row="4" Grid.Column="1" Height="25"/>
 
         <!--Correct Value for Error Field-->
         <Label Grid.Row="5" Grid.Column="0" Content="Error Field Correct Value"/>
-        <TextBox Name="data_error_field_correct_value" Grid.Row="5" Grid.Column="1" Height="25"/>
+        <TextBox Name="txb_err_field_corr_value" Grid.Row="5" Grid.Column="1" Height="25"/>
 
         <!--Comment  for Error Field-->
         <Label Grid.Row="6" Grid.Column="0" Content="Comment"/>
-        <TextBox  x:Uid="data_error_comment" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="160"/>
+        <TextBox  x:Uid="txb_err_comment" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="160"/>
         
         <!--Button To Submit-->
-        <Button Name="data_error_submit" Grid.Row="7" Grid.ColumnSpan="2" Width="100" HorizontalAlignment="Center" Content="Submit" Height="25" VerticalAlignment="Bottom"/>
-
-
-
-
-
-
+        <Button Name="btn_err_submit" Grid.Row="7" Grid.ColumnSpan="2" Width="100" HorizontalAlignment="Center" Content="Submit" Height="25" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

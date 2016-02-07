@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace catalyst_project.View
     /// </summary>
     public partial class ErrorDataWindow : Window
     {
+
         public ErrorDataWindow()
         {
             InitializeComponent();

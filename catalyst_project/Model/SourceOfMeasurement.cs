@@ -1,4 +1,5 @@
-﻿using System;
+﻿using catalyst_project.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,18 +7,31 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class SourceOfMeasurement
+    class SourceOfMeasurement : DBModel
     {
         private int _Id;
         private string _Source;
+        private bool _IsChecked;
 
-        public SourceOfMeasurement(int id, string source)
+        public SourceOfMeasurement(int id, string source, bool isChecked)
         {
             Id = id;
             Source = source;
+            IsChecked = isChecked;
 
         }
+        public bool IsChecked
+        {
+            get
+            {
+                return _IsChecked;
+            }
 
+            set
+            {
+                _IsChecked = value;
+            }
+        }
         public int Id
         {
             get

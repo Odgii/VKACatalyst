@@ -1,4 +1,5 @@
-﻿using System;
+﻿using catalyst_project.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class ApplicationFieldTestbench : INotifyPropertyChanged
+    class ApplicationFieldTestbench : DBModel, INotifyPropertyChanged
     {
         private int _Id;
         private string _Name;
         private bool _IsChecked;
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ApplicationFieldTestbench(bool isChecked, int id, string name)

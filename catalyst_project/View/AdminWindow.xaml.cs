@@ -2,6 +2,7 @@
 using catalyst_project.Model;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -33,7 +34,7 @@ namespace catalyst_project.View
         private ObservableCollection<ModelType> modeltypes;
         private ObservableCollection<SimulationTool> tools;
         private ObservableCollection<Bug> bugs;
-  //      private ObservableCollection<AgingProcedure> agingprocedures;
+        private ObservableCollection<CatalystApproval> approvals;
   //      private ObservableCollection<AgingProcedure> agingprocedures;
 
 
@@ -58,13 +59,14 @@ namespace catalyst_project.View
             InitModelTypes();
             InitTools();
             InitBugs();
+            InitApprovals();
         }
         /*
          * History Section
          */ 
 
         private void InitHistory()
-        { 
+        {
             histories = new ObservableCollection<History>();
             histories = populateAdminFromDb.LoadHistory();
             grid_history.ItemsSource = histories;
@@ -1114,7 +1116,6 @@ namespace catalyst_project.View
                 txb_bug_comment.Text = selectedBug.Comment; 
             }
         }
-
         private void btns_bug_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
@@ -1220,7 +1221,6 @@ namespace catalyst_project.View
             
             }
         }
-
         private void cmb_search_bugs_value_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedVal = cmb_search_bugs_value.Text;
@@ -1249,7 +1249,57 @@ namespace catalyst_project.View
 
         }
 
-
         //Bugs section ends here
+
+        /*
+         * Data approval section
+         */ 
+        private void InitApprovals()
+        {
+            approvals = new ObservableCollection<CatalystApproval>();
+            approvals = populateAdminFromDb.LoadApprovals();
+            grid_datas.ItemsSource = approvals;
+        }
+        private void grid_datas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (grid_datas.SelectedItems.Count > 0)
+            {
+                CatalystApproval selectedCatalyst = new CatalystApproval();
+                selectedCatalyst = approvals[grid_datas.SelectedIndex];
+                txb_catalyst_id.Text = selectedCatalyst.Catalyst_id.ToString();
+                ckb_catalyst_approved.IsChecked = selectedCatalyst.Is_Approved;
+                txb_review_comment.Text = selectedCatalyst.Review_Comment;
+            }
+        }
+        private void btns_data_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (btn.Name == "btn_data_update" && txb_catalyst_id.Text != "")
+            {
+                MySqlCommand cmd_data_update = new MySqlCommand();
+                cmd_data_update.CommandText = "update catalyst set review_comment = @review_comment, is_approved = @is_approved where catalyst_id = @id";
+                cmd_data_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_catalyst_id.Text));
+                cmd_data_update.Parameters.AddWithValue("@is_approved", ckb_catalyst_approved.IsChecked);
+                cmd_data_update.Parameters.AddWithValue("@review_comment", txb_review_comment.Text);
+                dbconnection.Update(cmd_data_update);
+
+                approvals = populateAdminFromDb.LoadApprovals();
+                grid_datas.ItemsSource = approvals;
+            }
+            if (btn.Name == "btn_data_clear")
+            {
+                ClearData();
+            }
+        
+        }
+        private void ClearData()
+        {
+            txb_catalyst_id.Clear();
+            ckb_catalyst_approved.IsChecked = false;
+            txb_review_comment.Clear();
+        }
+
+        
     }
 }

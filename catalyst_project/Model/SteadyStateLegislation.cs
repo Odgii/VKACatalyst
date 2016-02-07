@@ -1,4 +1,5 @@
-﻿using System;
+﻿using catalyst_project.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class SteadyStateLegislation : INotifyPropertyChanged
+    class SteadyStateLegislation : DBModel, INotifyPropertyChanged
     {
         private int _Id;
         private string _Legislation;

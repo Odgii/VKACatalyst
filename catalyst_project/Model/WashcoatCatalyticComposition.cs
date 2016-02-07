@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using catalyst_project.View;
 
 namespace catalyst_project.Model
 {
-   public class WashcoatCatalyticComposition : INotifyPropertyChanged
+   public class WashcoatCatalyticComposition : DBModel, INotifyPropertyChanged
     {
         private bool _IsChecked;
         private string _WashcoatValue;

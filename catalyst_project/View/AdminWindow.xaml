@@ -18,7 +18,7 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <Label Content="Search By" Width="200"></Label>
-                            <ComboBox Width="200" />
+                            <ComboBox Width="200" Name="cmb_history_search_by" />
                             <TextBox Width="200" Name="txb_history_search_val" Margin ="20,0,0,0"/>
                             <Button Content="Search" Name="btn_history_search" Margin="20,0,0,0" Width="50" Click="btns_history_Click"/>
                         </StackPanel>
@@ -543,7 +543,43 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Data Approval" Height="30" Width="200" Background="AliceBlue">
-
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="630"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
+                    <Grid >
+                        <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_datas" SelectionChanged="grid_datas_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Catalyst ID" Width="100" Binding="{Binding Catalyst_id}" />
+                                <DataGridCheckBoxColumn Header="Is Approved" Width="150" Binding="{Binding Is_Approved}" />
+                                <DataGridTextColumn Header="Review Comment"  Width="350" Binding="{Binding Review_Comment}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_data_fields" Margin="10" Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Catalyst ID" Width="200"/>
+                            <TextBox Width="300" Name="txb_catalyst_id" IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Approved" Width="200"/>
+                            <CheckBox Margin="0,5,5,5" Name="ckb_catalyst_approved"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Label Content="Review Comment" Width="200"/>
+                            <TextBox Width="300" Name="txb_review_comment"  Height="300" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Update" Name="btn_data_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_data_Click"/>
+                            <Button Content="Clear" Name="btn_data_clear" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_data_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Bugs Reported" Height="30" Width="200" Background="AliceBlue">
                 <Grid >

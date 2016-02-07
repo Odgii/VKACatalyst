@@ -56,7 +56,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                MonolithMaterial m = new MonolithMaterial(id, name);
+                MonolithMaterial m = new MonolithMaterial(id, name, false);
                 materials.Add(m);
             }
 
@@ -71,7 +71,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                CatalystType type = new CatalystType(id, name);
+                CatalystType type = new CatalystType(id, name, false);
                 catalystTypes.Add(type);
             }
             return catalystTypes;
@@ -85,7 +85,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                AgingProcedure procedure = new AgingProcedure(id, name);
+                AgingProcedure procedure = new AgingProcedure(id, name, false);
                 agingProcedures.Add(procedure);
             }
             return agingProcedures;
@@ -100,7 +100,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                AgingStatus status = new AgingStatus(id, name);
+                AgingStatus status = new AgingStatus(id, name,false);
                 agingStatuses.Add(status);
             }
             return agingStatuses;
@@ -115,7 +115,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                BoundaryShape shape = new BoundaryShape(id, name);
+                BoundaryShape shape = new BoundaryShape(id, name,false);
                 boundaryShapes.Add(shape);
             }
             return boundaryShapes;
@@ -129,7 +129,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                ModelType model = new ModelType(id, name);
+                ModelType model = new ModelType(id, name,false);
                 modelTypes.Add(model);
             }
             return modelTypes;
@@ -143,7 +143,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                SimulationTool s = new SimulationTool(id, name);
+                SimulationTool s = new SimulationTool(id, name,false);
                 simulationTools.Add(s);
             }
             return simulationTools;
@@ -215,7 +215,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                CristallineWashcoatComponentFunction cr = new CristallineWashcoatComponentFunction(id, name);
+                CristallineWashcoatComponentFunction cr = new CristallineWashcoatComponentFunction(id, name, false);
                 functions.Add(cr);
             }
             return functions;
@@ -243,7 +243,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                SourceOfData src = new SourceOfData(id, name);
+                SourceOfData src = new SourceOfData(id, name, false);
                 sourceDatas.Add(src);
             }
             return sourceDatas;
@@ -257,7 +257,7 @@ namespace catalyst_project.Database
                 string idstring = list[0][i];
                 int id = Convert.ToInt32(idstring);
                 string name = list[1][i];
-                SourceOfMeasurement src = new SourceOfMeasurement(id, name);
+                SourceOfMeasurement src = new SourceOfMeasurement(id, name, false);
                 sourceOfMeasurements.Add(src);
             }
             return sourceOfMeasurements;

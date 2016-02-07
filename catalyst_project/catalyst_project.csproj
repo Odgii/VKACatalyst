@@ -59,6 +59,8 @@
     <Reference Include="System.Data">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -88,7 +90,9 @@
     <Compile Include="Model\BoundaryShape.cs" />
     <Compile Include="Model\Bug.cs" />
     <Compile Include="Model\BugType.cs" />
+    <Compile Include="Model\CatalystApproval.cs" />
     <Compile Include="Model\CatalystType.cs" />
+    <Compile Include="Model\CheckBoxValues.cs" />
     <Compile Include="Model\CristallineWashcoatComponentFunction.cs" />
     <Compile Include="Model\Emission.cs" />
     <Compile Include="Model\Manufacturer.cs" />
@@ -103,10 +107,15 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserRole.cs" />
     <Compile Include="Model\WashcoatCatalyticComposition.cs" />
+    <Compile Include="UIComponents\CustomCheckBox.cs" />
+    <Compile Include="UIComponents\CustomComboBox.cs" />
+    <Compile Include="UIComponents\CustomComboBoxItem.cs" />
+    <Compile Include="UIComponents\CustomTextBox.cs" />
     <Compile Include="View\CombineCatalystWindow.xaml.cs">
       <DependentUpon>CombineCatalystWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\History.cs" />
+    <Compile Include="View\DBModel.cs" />
     <Compile Include="View\OpenCatalystWindow.xaml.cs">
       <DependentUpon>OpenCatalystWindow.xaml</DependentUpon>
     </Compile>
@@ -116,6 +125,10 @@
     <Compile Include="View\UniformGridTest.xaml.cs">
       <DependentUpon>UniformGridTest.xaml</DependentUpon>
     </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

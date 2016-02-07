@@ -1,4 +1,5 @@
-﻿using System;
+﻿using catalyst_project.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-     class PreciousMetalLoading: INotifyPropertyChanged
+     class PreciousMetalLoading: DBModel, INotifyPropertyChanged
     {
         private bool _IsChecked;
         private int _Id;
