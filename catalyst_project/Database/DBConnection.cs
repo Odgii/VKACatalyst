@@ -113,7 +113,6 @@ namespace catalyst_project.Database
                 MySqlCommand cmd = new MySqlCommand(q, connection);
                 string s = cmd.ExecuteScalar().ToString();
                 n = Convert.ToInt32(s);
-                Console.WriteLine("number of column:" + n);
                 this.CloseConnection();
             }
             List<string>[] list = new List<string>[n];

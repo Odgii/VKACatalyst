@@ -180,7 +180,7 @@ namespace catalyst_project.Database
         public ObservableCollection<Emission> populateEmissions()
         {
             ObservableCollection<Emission> emissions = new ObservableCollection<Emission>();
-            List<string>[] list = database.Select("emission", "select * from emission");
+            List<string>[] list = database.Select("emissionlegislation", "select * from emissionlegislation");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -237,7 +237,7 @@ namespace catalyst_project.Database
         public ObservableCollection<SourceOfData> populateSourceOfDatas() 
         {
             ObservableCollection<SourceOfData> sourceDatas = new ObservableCollection<SourceOfData>();
-            List<string>[] list = database.Select("SourceOfData", "select * from SourceOfData");
+            List<string>[] list = database.Select("SourceData", "select * from SourceData");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -251,7 +251,7 @@ namespace catalyst_project.Database
         public ObservableCollection<SourceOfMeasurement> populateSourceOfMeasurements() 
         {
             ObservableCollection<SourceOfMeasurement> sourceOfMeasurements = new ObservableCollection<SourceOfMeasurement>();
-            List<string>[] list = database.Select("sourceofmeasurement", "select * from sourceOfMeasurement");
+            List<string>[] list = database.Select("sourcemeasurement", "select * from sourceMeasurement");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];

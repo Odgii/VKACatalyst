@@ -41,28 +41,23 @@ namespace catalyst_project.UIComponents
     /// Step 2)
     /// Go ahead and use your control in the XAML file.
     ///
-    ///     <MyNamespace:CustomTextBox/>
+    ///     <MyNamespace:CustomDatePicker/>
     ///
     /// </summary>
-    public class CustomTextBox : TextBox
+    public class CustomDatePicker : DatePicker
     {
         private String _TableName;
         private String _FieldName;
-        private String _ContentType;
-        public CustomTextBox()
+        public CustomDatePicker()
         {
 
         }
 
         public static DependencyProperty hasTableName =
-        DependencyProperty.Register("TableName", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+        DependencyProperty.Register("TableName", typeof(String), typeof(CustomDatePicker), new PropertyMetadata(default(string)));
 
         public static DependencyProperty hasFieldName =
-        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
-
-
-        public static DependencyProperty hasContentType =
-        DependencyProperty.Register("ContentType", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomDatePicker), new PropertyMetadata(default(string)));
         public String TableName
         {
             get
@@ -86,17 +81,6 @@ namespace catalyst_project.UIComponents
                 _FieldName = value;
             }
         }
-
-        public String ContentType
-        {
-            get
-            {
-                return _ContentType;
-            }
-            set
-            {
-                _ContentType = value;
-            }
-        }
     }
+
 }

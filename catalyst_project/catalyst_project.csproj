@@ -83,6 +83,10 @@
     <Compile Include="Database\SqliteDBConnection.cs" />
     <Compile Include="Database\PopulateAdminPanel.cs" />
     <Compile Include="Database\UpdateDropdownsToDB.cs" />
+    <Compile Include="Model\MaxAmmoniaUnit.cs" />
+    <Compile Include="Model\MaxNSCUnit.cs" />
+    <Compile Include="Model\MaxO2Unit.cs" />
+    <Compile Include="Model\UnitAgingDuration.cs" />
     <Compile Include="Model\AgingProcedure.cs" />
     <Compile Include="Model\AgingStatus.cs" />
     <Compile Include="Model\ApplicationField.cs" />
@@ -104,12 +108,18 @@
     <Compile Include="Model\SourceOfMeasurement.cs" />
     <Compile Include="Model\SteadyStateLegislation.cs" />
     <Compile Include="Model\TransientLegislation.cs" />
+    <Compile Include="Model\UnitLoading.cs" />
+    <Compile Include="Model\UnitOtherCycle.cs" />
+    <Compile Include="Model\UnitCycle.cs" />
+    <Compile Include="Model\UnitPreciousMetalLoading.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserRole.cs" />
     <Compile Include="Model\WashcoatCatalyticComposition.cs" />
+    <Compile Include="Model\ZoneLayer.cs" />
     <Compile Include="UIComponents\CustomCheckBox.cs" />
     <Compile Include="UIComponents\CustomComboBox.cs" />
     <Compile Include="UIComponents\CustomComboBoxItem.cs" />
+    <Compile Include="UIComponents\CustomDatePicker.cs" />
     <Compile Include="UIComponents\CustomTextBox.cs" />
     <Compile Include="View\CombineCatalystWindow.xaml.cs">
       <DependentUpon>CombineCatalystWindow.xaml</DependentUpon>

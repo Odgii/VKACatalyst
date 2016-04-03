@@ -54,11 +54,11 @@ namespace catalyst_project.UIComponents
 
         }
 
-        public static readonly DependencyProperty hasTableName =
-        DependencyProperty.Register("TableName", typeof(String), typeof(CustomTextBox));
+        public static DependencyProperty hasTableName =
+        DependencyProperty.Register("TableName", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
 
-        public static readonly DependencyProperty hasFieldName =
-        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomTextBox));
+        public static DependencyProperty hasFieldName =
+        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
         public String TableName
         {
             get

@@ -52,42 +52,61 @@ namespace catalyst_project.UIComponents
         private String _Name;
         private String _TableName;
         private String _FieldName;
+        private String _FieldName1;
+        private String _FieldValue1;
+        private String _FieldName2;
+        private String _FieldValue2;
         private bool _isCombobox;
         private bool _isTextBox;
         private bool _isNumber;
+        private bool _unitIsConvertible;
         private String _Unit;
+        private String _UnitField;
+        private Array _UnitSource;
         private bool _isDateTimePicker;
         private bool _MultipleChoice;
         private String _DisplayMemberPath;
         private String _SelectedValuePath;
-        private String _SourceCollection;
-
         private Array _DBModelCollection;
 
-        public CustomComboBoxItem(String name, String table_name, String field_name, bool is_TextBox,bool is_Number, String unit, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath)
+        public CustomComboBoxItem(String name, String table_name, String field_name, String field_name1, String field_val1, String field_name2, String field_val2, bool is_TextBox, bool is_Number, bool unit_is_Convertible, String unit, String unit_field, Array unit_collection, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath)
         {
             Name = name;
             TableName = table_name;
             FieldName = field_name;
+            FieldName1 = field_name1;
+            FieldName2 = field_name2;
+            FieldValue1 = field_val1;
+            FieldValue2 = field_val2;
             IsComboBox = is_Combobox;
             IsDateTimePicker = is_DateTimePicker;
-      //      SourceCollection = sourceCollection;
             IsTextBox = is_TextBox;
             IsNumber = is_Number;
+            UnitIsConvertible = unit_is_Convertible;
             Unit = unit;
+            UnitCollection = unit_collection;
+            UnitField = unit_field;
             DisplayMemberPath = displayed_memberPath;
             SelectedValuePath = selected_valuepath;
+
         }
 
 
-        public CustomComboBoxItem(String name, String table_name, String field_name, bool is_TextBox, bool is_Number, String unit, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath, Array sourceCollection)
+        public CustomComboBoxItem(String name, String table_name, String field_name, String field_name1, String field_val1, String field_name2, String field_val2, bool is_TextBox, bool is_Number, bool unit_is_Convertible, String unit, String unit_field, Array unit_collection, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath, Array sourceCollection)
         {
             Name = name;
             TableName = table_name;
             FieldName = field_name;
+            FieldName1 = field_name1;
+            FieldName2 = field_name2;
+            FieldValue1 = field_val1;
+            FieldValue2 = field_val2;
             IsComboBox = is_Combobox;
             IsDateTimePicker = is_DateTimePicker;
             DBModelCollection = sourceCollection;
+            UnitIsConvertible = unit_is_Convertible;
+            UnitCollection = unit_collection;
+            UnitField = unit_field;
             IsTextBox = is_TextBox;
             IsNumber = is_Number;
             Unit = unit;
@@ -95,6 +114,60 @@ namespace catalyst_project.UIComponents
             SelectedValuePath = selected_valuepath;
         }
 
+        public String FieldName1
+        {
+            get
+            {
+                return _FieldName1;
+            }
+
+            set
+            {
+                _FieldName1 = value;
+            }
+
+        }
+
+        public String FieldName2
+        {
+            get
+            {
+                return _FieldName2;
+            }
+
+            set
+            {
+                _FieldName2 = value;
+            }
+
+        }
+
+        public String FieldValue1
+        {
+            get
+            {
+                return _FieldValue1;
+            }
+
+            set
+            {
+                _FieldValue1 = value;
+            }
+        }
+
+        public String FieldValue2
+        {
+            get
+            {
+                return _FieldValue2;
+            }
+
+            set
+            {
+                _FieldValue2 = value;
+            }
+
+        }
 
         public String Name
         {
@@ -149,6 +222,18 @@ namespace catalyst_project.UIComponents
             }
         }
 
+
+        public bool UnitIsConvertible
+        {
+            get
+            {
+                return _unitIsConvertible;
+            }
+            set
+            {
+                _unitIsConvertible = value;
+            }
+        }
 
         public bool IsDateTimePicker
         {
@@ -236,16 +321,15 @@ namespace catalyst_project.UIComponents
         }
 
 
-
-        public String SourceCollection
+        public String UnitField
         {
             get
             {
-                return _SourceCollection;
+                return _UnitField;
             }
             set
             {
-                _SourceCollection = value;
+                _UnitField = value;
             }
         }
 
@@ -262,6 +346,17 @@ namespace catalyst_project.UIComponents
             }
         }
 
+        public Array UnitCollection
+        {
+            get
+            {
+                return _UnitSource;
+            }
+            set
+            {
+                _UnitSource = value;
+            }
+        }
 
         
 
