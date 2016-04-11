@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Collections.ObjectModel;
 using System.Windows;
-using Finisar.SQLite;
 
 namespace catalyst_project.Database
 {
@@ -102,17 +101,15 @@ namespace catalyst_project.Database
             }
         }
 
-        public List<string>[] Select(string tableName, string query)
+        public List<string>[] Select(string query)
         {
             int n = 0;
 
             if (this.OpenConnection() == true)
             {
-
-                string q = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema = 'catalyst_db' AND table_name = '" + tableName + "'";
-                MySqlCommand cmd = new MySqlCommand(q, connection);
-                string s = cmd.ExecuteScalar().ToString();
-                n = Convert.ToInt32(s);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader data = cmd.ExecuteReader();
+                n = data.FieldCount;
                 this.CloseConnection();
             }
             List<string>[] list = new List<string>[n];

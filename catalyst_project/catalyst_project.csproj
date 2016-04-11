@@ -28,6 +28,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>5af82dfa</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,14 +50,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="SQLite.NET">
-      <HintPath>bin\Debug\SQLite.NET.0.21_x68_dll\SQLite.NET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.99.0\lib\net45\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.99.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.99.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Drawing" />
@@ -83,9 +102,9 @@
     <Compile Include="Database\SqliteDBConnection.cs" />
     <Compile Include="Database\PopulateAdminPanel.cs" />
     <Compile Include="Database\UpdateDropdownsToDB.cs" />
-    <Compile Include="Model\MaxAmmoniaUnit.cs" />
-    <Compile Include="Model\MaxNSCUnit.cs" />
-    <Compile Include="Model\MaxO2Unit.cs" />
+    <Compile Include="Model\UnitMaxAmmonia.cs" />
+    <Compile Include="Model\UnitMaxNOX.cs" />
+    <Compile Include="Model\UnitMaxOSC.cs" />
     <Compile Include="Model\UnitAgingDuration.cs" />
     <Compile Include="Model\AgingProcedure.cs" />
     <Compile Include="Model\AgingStatus.cs" />
@@ -108,14 +127,15 @@
     <Compile Include="Model\SourceOfMeasurement.cs" />
     <Compile Include="Model\SteadyStateLegislation.cs" />
     <Compile Include="Model\TransientLegislation.cs" />
-    <Compile Include="Model\UnitLoading.cs" />
-    <Compile Include="Model\UnitOtherCycle.cs" />
-    <Compile Include="Model\UnitCycle.cs" />
+    <Compile Include="Model\UnitNormalCycle.cs" />
+    <Compile Include="Model\UnitSupport.cs" />
+    <Compile Include="Model\UnitPNCycle.cs" />
     <Compile Include="Model\UnitPreciousMetalLoading.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserRole.cs" />
     <Compile Include="Model\WashcoatCatalyticComposition.cs" />
     <Compile Include="Model\ZoneLayer.cs" />
+    <Compile Include="Services\Converters\IntegerValidator.cs" />
     <Compile Include="UIComponents\CustomCheckBox.cs" />
     <Compile Include="UIComponents\CustomComboBox.cs" />
     <Compile Include="UIComponents\CustomComboBoxItem.cs" />
@@ -222,6 +242,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -255,6 +276,13 @@
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

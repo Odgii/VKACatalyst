@@ -7,28 +7,23 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class UnitCycle: DBModel
+    class ZoneLayer:DBModel
     {
-        private string _CycleUnit;
+        private int _Id;
 
-        public UnitCycle()
-        { 
+        public ZoneLayer(int id) { 
+            Id = id;
         }
 
-        public UnitCycle(string cycle_unit)
-        {
-            CycleUnit = cycle_unit;
-        }
-
-        public string CycleUnit
+        public int Id
         {
             get
             {
-                return _CycleUnit;
+                return _Id;
             }
             set
             {
-                _CycleUnit = value;
+                _Id = value;
             }
         }
     }

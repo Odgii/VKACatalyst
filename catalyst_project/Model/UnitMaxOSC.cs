@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class MaxNSCUnit: DBModel
+    class UnitMaxOSC : DBModel
     {
         private int _Id;
         private string _Unit;
 
-        public MaxNSCUnit() {
+        public UnitMaxOSC() {
         }
 
-        public MaxNSCUnit(int id, string unit)
-        { 
+        public UnitMaxOSC(int id, string unit) {
+            Unit = unit;
+            Id = id;
             
         }
 

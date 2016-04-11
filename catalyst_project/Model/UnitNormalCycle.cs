@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class UnitOtherCycle: DBModel
+    class UnitNormalCycle: DBModel
     {
         private string _CycleUnit;
 
-        public UnitOtherCycle()
+        public UnitNormalCycle()
         { 
         }
 
-        public UnitOtherCycle(string cycle_unit)
+        public UnitNormalCycle(string cycle_unit)
         {
             CycleUnit = cycle_unit;
         }

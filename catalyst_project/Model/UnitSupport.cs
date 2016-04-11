@@ -7,37 +7,41 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class UnitLoading :DBModel
+    class UnitSupport : DBModel
     {
-        private int _Id;
-        private string _Unit;
+        private int _id;
+        private string _unit;
 
-        public UnitLoading() { 
+        public UnitSupport()
+        { 
         }
 
-        public UnitLoading(int id, string unit)
+        public UnitSupport(int id, string unit)
         {
+            Unit = unit;
+            Id = id;
         }
 
-        public int Id {
+        public int Id
+        {
             get
             {
-                return _Id;
+                return _id;
             }
             set
             {
-                _Id = value;
+                _id = value;
             }
         }
-
-        public string Unit {
+        public string Unit
+        {
             get
             {
-                return _Unit;
+                return _unit;
             }
             set
             {
-                _Unit = value;
+                _unit = value;
             }
         }
     }

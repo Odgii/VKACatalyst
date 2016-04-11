@@ -143,54 +143,55 @@ namespace catalyst_project.View
             Zones.Add(new ZoneLayer(5));
             arrLayer = Layers.Cast<DBModel>().ToArray();
 
-            ObservableCollection<UnitCycle> normalCycles = new ObservableCollection<UnitCycle>();
-            normalCycles.Add(new UnitCycle("g/kWh"));
-            normalCycles.Add(new UnitCycle("g/km"));
-            normalCycles.Add(new UnitCycle("g/bhp*hr"));
-            normalCycles.Add(new UnitCycle("g/mi"));
+            ObservableCollection<UnitPNCycle> normalCycles = new ObservableCollection<UnitPNCycle>();
+           
+            normalCycles.Add(new UnitPNCycle("g/kWh"));
+            normalCycles.Add(new UnitPNCycle("g/km"));
+            normalCycles.Add(new UnitPNCycle("g/bhp*hr"));
+            normalCycles.Add(new UnitPNCycle("g/mi"));
             arrCycle = normalCycles.Cast<DBModel>().ToArray();
 
-            ObservableCollection<UnitOtherCycle> otherCycles = new ObservableCollection<UnitOtherCycle>();
-            otherCycles.Add(new UnitOtherCycle("#/kWh"));
-            otherCycles.Add(new UnitOtherCycle("#/km"));
-            otherCycles.Add(new UnitOtherCycle("#/bhp*hr"));
-            otherCycles.Add(new UnitOtherCycle("#/mi"));
+            ObservableCollection<UnitNormalCycle> otherCycles = new ObservableCollection<UnitNormalCycle>();
+            otherCycles.Add(new UnitNormalCycle("#/kWh"));
+            otherCycles.Add(new UnitNormalCycle("#/km"));
+            otherCycles.Add(new UnitNormalCycle("#/bhp*hr"));
+            otherCycles.Add(new UnitNormalCycle("#/mi"));
             arrOtherCycle = otherCycles.Cast<DBModel>().ToArray();
 
-            ObservableCollection<MaxO2Unit> maxO2Units = new ObservableCollection<MaxO2Unit>();
-            maxO2Units.Add(new MaxO2Unit(1, "µmol/g"));
-            maxO2Units.Add(new MaxO2Unit(2, "mmol/g"));
-            maxO2Units.Add(new MaxO2Unit(3, "mmol/l"));
-            maxO2Units.Add(new MaxO2Unit(4, "g/l"));
-            maxO2Units.Add(new MaxO2Unit(5, "mol/l"));
-            maxO2Units.Add(new MaxO2Unit(6, "g/ft³"));
-            maxO2Units.Add(new MaxO2Unit(7, "mol/ft³"));
+            ObservableCollection<UnitMaxOSC> maxO2Units = new ObservableCollection<UnitMaxOSC>();
+            maxO2Units.Add(new UnitMaxOSC(1, "µmol/g"));
+            maxO2Units.Add(new UnitMaxOSC(2, "mmol/g"));
+            maxO2Units.Add(new UnitMaxOSC(3, "mmol/l"));
+            maxO2Units.Add(new UnitMaxOSC(4, "g/l"));
+            maxO2Units.Add(new UnitMaxOSC(5, "mol/l"));
+            maxO2Units.Add(new UnitMaxOSC(6, "g/ft³"));
+            maxO2Units.Add(new UnitMaxOSC(7, "mol/ft³"));
             arrMaxO2 = maxO2Units.Cast<DBModel>().ToArray();
 
-            ObservableCollection<MaxNSCUnit> maxNSCUnits = new ObservableCollection<MaxNSCUnit>();
-            maxNSCUnits.Add(new MaxNSCUnit(1, "µmol/g"));
-            maxNSCUnits.Add(new MaxNSCUnit(2, "mmol/g"));
-            maxNSCUnits.Add(new MaxNSCUnit(3, "mmol/l"));
-            maxNSCUnits.Add(new MaxNSCUnit(4, "g/l"));
-            maxNSCUnits.Add(new MaxNSCUnit(5, "mol/l"));
-            maxNSCUnits.Add(new MaxNSCUnit(6, "g/ft³"));
-            maxNSCUnits.Add(new MaxNSCUnit(7, "mol/ft³"));
+            ObservableCollection<UnitMaxNOX> maxNSCUnits = new ObservableCollection<UnitMaxNOX>();
+            maxNSCUnits.Add(new UnitMaxNOX(1, "µmol/g"));
+            maxNSCUnits.Add(new UnitMaxNOX(2, "mmol/g"));
+            maxNSCUnits.Add(new UnitMaxNOX(3, "mmol/l"));
+            maxNSCUnits.Add(new UnitMaxNOX(4, "g/l"));
+            maxNSCUnits.Add(new UnitMaxNOX(5, "mol/l"));
+            maxNSCUnits.Add(new UnitMaxNOX(6, "g/ft³"));
+            maxNSCUnits.Add(new UnitMaxNOX(7, "mol/ft³"));
             arrMaxNSC = maxNSCUnits.Cast<DBModel>().ToArray();
 
-            ObservableCollection<MaxAmmoniaUnit> maxAmmoniaUnits = new ObservableCollection<MaxAmmoniaUnit>();
-            maxAmmoniaUnits.Add(new MaxAmmoniaUnit(1, "µmol/g"));
-            maxAmmoniaUnits.Add(new MaxAmmoniaUnit(2, "mmol/g"));
-            maxAmmoniaUnits.Add(new MaxAmmoniaUnit(3, "mmol/l"));
-            maxAmmoniaUnits.Add(new MaxAmmoniaUnit(4, "g/l"));
-            maxAmmoniaUnits.Add(new MaxAmmoniaUnit(5, "mol/l"));
-            maxAmmoniaUnits.Add(new MaxAmmoniaUnit(6, "g/ft³"));
-            maxAmmoniaUnits.Add(new MaxAmmoniaUnit(7, "mol/ft³"));
+            ObservableCollection<UnitMaxAmmonia> maxAmmoniaUnits = new ObservableCollection<UnitMaxAmmonia>();
+            maxAmmoniaUnits.Add(new UnitMaxAmmonia(1, "µmol/g"));
+            maxAmmoniaUnits.Add(new UnitMaxAmmonia(2, "mmol/g"));
+            maxAmmoniaUnits.Add(new UnitMaxAmmonia(3, "mmol/l"));
+            maxAmmoniaUnits.Add(new UnitMaxAmmonia(4, "g/l"));
+            maxAmmoniaUnits.Add(new UnitMaxAmmonia(5, "mol/l"));
+            maxAmmoniaUnits.Add(new UnitMaxAmmonia(6, "g/ft³"));
+            maxAmmoniaUnits.Add(new UnitMaxAmmonia(7, "mol/ft³"));
             arrMaxAmmonia = maxAmmoniaUnits.Cast<DBModel>().ToArray();
 
-            ObservableCollection<UnitLoading> UnitLoadings = new ObservableCollection<UnitLoading>();
-            UnitLoadings.Add(new UnitLoading(1, "g/l"));
-            UnitLoadings.Add(new UnitLoading(2, "g/ft³"));
-            UnitLoadings.Add(new UnitLoading(3, "g/Kat"));
+            ObservableCollection<UnitPreciousMetalLoading> UnitLoadings = new ObservableCollection<UnitPreciousMetalLoading>();
+            UnitLoadings.Add(new UnitPreciousMetalLoading(1, "g/l"));
+            UnitLoadings.Add(new UnitPreciousMetalLoading(2, "g/ft³"));
+            UnitLoadings.Add(new UnitPreciousMetalLoading(3, "g/Kat"));
             arrUnitLoading = UnitLoadings.Cast<DBModel>().ToArray();
             
 

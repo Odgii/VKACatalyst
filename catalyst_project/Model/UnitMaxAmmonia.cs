@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace catalyst_project.Model
 {
-    class MaxAmmoniaUnit: DBModel
+    class UnitMaxAmmonia: DBModel
     {
         private int _Id;
         private string _Unit;
 
-        public MaxAmmoniaUnit() {
+        public UnitMaxAmmonia() {
         }
 
-        public MaxAmmoniaUnit(int id, string unit)
-        { 
-            
+        public UnitMaxAmmonia(int id, string unit)
+        {
+            Unit = unit;
+            Id = id;
         }
 
         public int Id {

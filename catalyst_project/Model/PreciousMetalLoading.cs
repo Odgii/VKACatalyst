@@ -18,9 +18,9 @@ namespace catalyst_project.Model
 
         public PreciousMetalLoading(bool isChecked, int id, string name)
         {
-             _Id = id;
-             _IsChecked = isChecked;
-             _Name = name;
+             Id = id;
+             IsChecked = isChecked;
+             Name = name;
         }
 
 

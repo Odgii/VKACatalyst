@@ -11,16 +11,16 @@ namespace catalyst_project.Database
     class PopulateDropdownsFromDB
     {
 
-        DBConnection database;
+        SqliteDBConnection database;
 
         public PopulateDropdownsFromDB() {
-            database = new DBConnection();
+            database = new SqliteDBConnection();
          //   SqliteDBConnection s = new SqliteDBConnection();
         }
         public ObservableCollection<Manufacturer> populateManufacturers() 
         {
             ObservableCollection<Manufacturer> manufacturers = new ObservableCollection<Manufacturer>();
-            List<string>[] list = database.Select("catalystmanufacturer", "select * from catalystmanufacturer ");
+            List<string>[] list = database.Select("select * from catalystmanufacturer ");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -35,7 +35,7 @@ namespace catalyst_project.Database
         public ObservableCollection<WashcoatCatalyticComposition> populateWashcoats()
         {
             ObservableCollection<WashcoatCatalyticComposition> washcoats = new ObservableCollection<WashcoatCatalyticComposition>();
-            List<string>[] list = database.Select("washcoat_material", "select * from washcoat_material ");
+            List<string>[] list = database.Select("select * from washcoatmaterial ");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -50,7 +50,7 @@ namespace catalyst_project.Database
         public ObservableCollection<MonolithMaterial> populateMonolithMaterials() 
         {
             ObservableCollection<MonolithMaterial> materials = new ObservableCollection<MonolithMaterial>();
-            List<string>[] list = database.Select("monolithmaterial", "select * from monolithmaterial");
+            List<string>[] list = database.Select("select * from monolithmaterial");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -65,7 +65,7 @@ namespace catalyst_project.Database
         public ObservableCollection<CatalystType> populateCatalystTypes()
         {
             ObservableCollection<CatalystType> catalystTypes = new ObservableCollection<CatalystType>();
-            List<string>[] list = database.Select("catalysttype", "select * from catalysttype");
+            List<string>[] list = database.Select( "select * from catalysttype");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -79,7 +79,7 @@ namespace catalyst_project.Database
         public ObservableCollection<AgingProcedure> populateAgingProcedures()
         {
             ObservableCollection<AgingProcedure> agingProcedures = new ObservableCollection<AgingProcedure>();
-            List<string>[] list = database.Select("agingprocedure", "select * from agingprocedure");
+            List<string>[] list = database.Select("select * from agingprocedure");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -94,7 +94,7 @@ namespace catalyst_project.Database
         public ObservableCollection<AgingStatus> populateAgingStatuses()
         {
             ObservableCollection<AgingStatus> agingStatuses = new ObservableCollection<AgingStatus>();
-            List<string>[] list = database.Select("AgingStatus", "select * from agingstatus");
+            List<string>[] list = database.Select("select * from agingstatus");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -109,7 +109,7 @@ namespace catalyst_project.Database
         public ObservableCollection<BoundaryShape> populateBoundaryShapes() 
         {
             ObservableCollection<BoundaryShape> boundaryShapes = new ObservableCollection<BoundaryShape>();
-            List<string>[] list = database.Select("substrateboundaryshape", "select * from substrateboundaryshape");
+            List<string>[] list = database.Select("select * from substrateboundaryshape");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -123,7 +123,7 @@ namespace catalyst_project.Database
         public ObservableCollection<ModelType> populateModelTypes() 
         {
             ObservableCollection<ModelType> modelTypes = new ObservableCollection<ModelType>();
-            List<string>[] list = database.Select("modeltype", "select * from modeltype");
+            List<string>[] list = database.Select("select * from modeltype");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -137,7 +137,7 @@ namespace catalyst_project.Database
         public ObservableCollection<SimulationTool> populateSimulationTools() 
         {
             ObservableCollection<SimulationTool> simulationTools = new ObservableCollection<SimulationTool>();
-            List<string>[] list = database.Select("simulationtool", "select * from simulationtool");
+            List<string>[] list = database.Select("select * from simulationtool");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -151,7 +151,7 @@ namespace catalyst_project.Database
         public ObservableCollection<SteadyStateLegislation> populateSteadyStateLegislations()
         {
             ObservableCollection<SteadyStateLegislation> steadyLegislations = new ObservableCollection<SteadyStateLegislation>();
-            List<string>[] list = database.Select("steadystatelegislationcycle", "select * from steadystatelegislationcycle");
+            List<string>[] list = database.Select("select * from steadystatelegislationcycle");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -166,7 +166,7 @@ namespace catalyst_project.Database
         public ObservableCollection<TransientLegislation> populateTransientLegislations() 
         {
             ObservableCollection<TransientLegislation> transientLegislations = new ObservableCollection<TransientLegislation>();
-            List<string>[] list = database.Select("transientlegislationcycle", "select * from transientlegislationcycle");
+            List<string>[] list = database.Select("select * from transientlegislationcycle");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -180,7 +180,7 @@ namespace catalyst_project.Database
         public ObservableCollection<Emission> populateEmissions()
         {
             ObservableCollection<Emission> emissions = new ObservableCollection<Emission>();
-            List<string>[] list = database.Select("emissionlegislation", "select * from emissionlegislation");
+            List<string>[] list = database.Select("select * from emissionlegislation");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -195,7 +195,8 @@ namespace catalyst_project.Database
         public ObservableCollection<PreciousMetalLoading> populatePreciousMetalLoadings()
         {
             ObservableCollection<PreciousMetalLoading> preciousMetalLoadings = new ObservableCollection<PreciousMetalLoading>();
-            List<string>[] list = database.Select("preciousmetalloading", "select * from preciousmetalloading");
+            List<string>[] list = database.Select("select * from preciousmetalloading");
+         
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -209,7 +210,7 @@ namespace catalyst_project.Database
         public ObservableCollection<CristallineWashcoatComponentFunction> populateCristallineWashcoatComponentFunctions()
         {
             ObservableCollection<CristallineWashcoatComponentFunction> functions = new ObservableCollection<CristallineWashcoatComponentFunction>();
-            List<string>[] list = database.Select("cristallinewashcoatcomponentfunction", "select * from cristallinewashcoatcomponentfunction");
+            List<string>[] list = database.Select("select * from cristallinewashcoatcomponentfunction");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -223,7 +224,7 @@ namespace catalyst_project.Database
         public ObservableCollection<ApplicationField> populateApplicationFields()
         {
             ObservableCollection<ApplicationField> applicationFields = new ObservableCollection<ApplicationField>();
-            List<string>[] list = database.Select("applicationfield", "select * from applicationfield");
+            List<string>[] list = database.Select( "select * from applicationfield");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -237,7 +238,7 @@ namespace catalyst_project.Database
         public ObservableCollection<SourceOfData> populateSourceOfDatas() 
         {
             ObservableCollection<SourceOfData> sourceDatas = new ObservableCollection<SourceOfData>();
-            List<string>[] list = database.Select("SourceData", "select * from SourceData");
+            List<string>[] list = database.Select("select * from SourceData");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -251,7 +252,7 @@ namespace catalyst_project.Database
         public ObservableCollection<SourceOfMeasurement> populateSourceOfMeasurements() 
         {
             ObservableCollection<SourceOfMeasurement> sourceOfMeasurements = new ObservableCollection<SourceOfMeasurement>();
-            List<string>[] list = database.Select("sourcemeasurement", "select * from sourceMeasurement");
+            List<string>[] list = database.Select("select * from sourceMeasurement");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 string idstring = list[0][i];
@@ -266,7 +267,7 @@ namespace catalyst_project.Database
         public ObservableCollection<UserRole> populateUserRoles()
         {
             ObservableCollection<UserRole> roles = new ObservableCollection<UserRole>();
-            List<string>[] list = database.Select("user_role", "select * from user_role");
+            List<string>[] list = database.Select("select * from userrole");
             for (int i = 0; i < list[0].Count(); i++)
             {
                 int id = Convert.ToInt32(list[0][i]);
@@ -276,5 +277,89 @@ namespace catalyst_project.Database
             }
             return roles;
         }
+
+        public ObservableCollection<UnitPreciousMetalLoading> populateUnitPreciousLoading()
+        {
+            ObservableCollection<UnitPreciousMetalLoading> units = new ObservableCollection<UnitPreciousMetalLoading>();
+            List<string>[] list = database.Select("select * from unitpreciousmetalloading");
+            for (int i = 0; i < list[0].Count; i++) {
+                int id = Convert.ToInt32(list[0][i]);
+                string unit = list[1][i];
+                UnitPreciousMetalLoading u = new UnitPreciousMetalLoading(id, unit);
+                units.Add(u);     
+            }
+            return units;
+        }
+
+        public ObservableCollection<UnitMaxAmmonia> populateUnitMaxAmmonia()
+        {
+            ObservableCollection<UnitMaxAmmonia> units = new ObservableCollection<UnitMaxAmmonia>();
+            List<string>[] list = database.Select("select * from unitmaxammonia");
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                int id = Convert.ToInt32(list[0][i]);
+                string unit = list[1][i];
+                UnitMaxAmmonia u = new UnitMaxAmmonia(id, unit);
+                units.Add(u);
+            }
+            return units;
+        }
+
+        public ObservableCollection<UnitSupport> populateUnitSupport()
+        {
+            ObservableCollection<UnitSupport> units = new ObservableCollection<UnitSupport>();
+            List<string>[] list = database.Select( "select * from unitsupport");
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                int id = Convert.ToInt32(list[0][i]);
+                string unit = list[1][i];
+                UnitSupport u = new UnitSupport(id, unit);
+                units.Add(u);
+            }
+            return units;
+        }
+
+        public ObservableCollection<UnitMaxNOX> populateUnitMaxNox()
+        {
+            ObservableCollection<UnitMaxNOX> units = new ObservableCollection<UnitMaxNOX>();
+            List<string>[] list = database.Select( "select * from unitmaxnox");
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                int id = Convert.ToInt32(list[0][i]);
+                string unit = list[1][i];
+                UnitMaxNOX u = new UnitMaxNOX(id, unit);
+                units.Add(u);
+            }
+            return units;
+        }
+
+        public ObservableCollection<UnitMaxOSC> populateUnitMaxOsc()
+        {
+            ObservableCollection<UnitMaxOSC> units = new ObservableCollection<UnitMaxOSC>();
+            List<string>[] list = database.Select( "select * from UnitMaxOSC");
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                int id = Convert.ToInt32(list[0][i]);
+                string unit = list[1][i];
+                UnitMaxOSC u = new UnitMaxOSC(id, unit);
+                units.Add(u);
+            }
+            return units;
+        }
+                
+        public ObservableCollection<UnitAgingDuration> populateUnitAgingDuration()
+        {
+            ObservableCollection<UnitAgingDuration> units = new ObservableCollection<UnitAgingDuration>();
+            List<string>[] list = database.Select( "select * from unitagingduration");
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                int id = Convert.ToInt32(list[0][i]);
+                string unit = list[1][i];
+                UnitAgingDuration u = new UnitAgingDuration(id, unit);
+                units.Add(u);
+            }
+            return units;
+        }
+       
     }
 }
