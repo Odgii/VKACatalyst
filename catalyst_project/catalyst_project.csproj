@@ -198,7 +198,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Services\Converters\ConverterGeneralInfo.cs" />
+    <Compile Include="Services\Converters\Converter.cs" />
     <Compile Include="View\ErrorDataWindow.xaml.cs">
       <DependentUpon>ErrorDataWindow.xaml</DependentUpon>
     </Compile>
