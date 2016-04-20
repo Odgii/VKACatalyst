@@ -99,9 +99,13 @@
     </ApplicationDefinition>
     <Compile Include="Database\DBConnection.cs" />
     <Compile Include="Database\PopulateDropdownsFromDB.cs" />
+    <Compile Include="Database\Search.cs" />
     <Compile Include="Database\SqliteDBConnection.cs" />
     <Compile Include="Database\PopulateAdminPanel.cs" />
     <Compile Include="Database\UpdateDropdownsToDB.cs" />
+    <Compile Include="Model\CatalystResult.cs" />
+    <Compile Include="Model\FileToUpload.cs" />
+    <Compile Include="Model\SearchResult.cs" />
     <Compile Include="Model\UnitMaxAmmonia.cs" />
     <Compile Include="Model\UnitMaxNOX.cs" />
     <Compile Include="Model\UnitMaxOSC.cs" />
@@ -242,6 +246,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="catalyst_db.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

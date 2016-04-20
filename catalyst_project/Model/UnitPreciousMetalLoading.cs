@@ -10,16 +10,16 @@ namespace catalyst_project.Model
     class UnitPreciousMetalLoading : DBModel
     {
         private int _Id;
-        private string _LoadingUnit;
+        private string _Unit;
 
         public UnitPreciousMetalLoading()
         { 
         }
 
-        public UnitPreciousMetalLoading(int id, string loading_unit)
+        public UnitPreciousMetalLoading(int id, string unit)
         {
             Id = id;
-            LoadingUnit = loading_unit;
+            Unit = unit;
         }
 
         public int Id
@@ -34,16 +34,16 @@ namespace catalyst_project.Model
             }
         }
 
-        public string LoadingUnit
+        public string Unit
         {
             get
             {
-                return _LoadingUnit;
+                return _Unit;
             }
 
             set
             {
-                _LoadingUnit = value;
+                _Unit = value;
             }
         }
     }

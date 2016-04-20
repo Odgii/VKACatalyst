@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
 namespace catalyst_project
 {
@@ -22,16 +23,42 @@ namespace catalyst_project
     /// </summary>
     public partial class MainWindow : Window
     {
+        SqliteDBConnection db;
+        private int _userID = 0;
         public MainWindow()
         {
             InitializeComponent();
+            db = new SqliteDBConnection();
         }
 
         private void LoginClicked(object sender, RoutedEventArgs e)
         {
-             MainApplication new_app = new MainApplication();
-             new_app.Show();
-             this.Close();
+            SQLiteCommand cmd = new SQLiteCommand("select * from user where user_code = @user_code and user_password = @user_password");
+            cmd.Parameters.AddWithValue("@user_code", txb_username.Text);
+            cmd.Parameters.AddWithValue("@user_password", txb_password.Text);
+            int user_id = db.Exist(cmd);
+            if (user_id > 0)
+            {
+                UserID = user_id;
+             //   SearchWindow new_app = new SearchWindow();
+                MainApplication new_app = new MainApplication();
+                new_app.Show();
+                this.Close();
+            }
+            else {
+                MessageBox.Show("Invalid Username or Password.");
+            }
+             
+        }
+
+        public int UserID {
+            get {
+                return _userID;
+            }
+            set
+            {
+                _userID = value;
+            }
         }
     }
 }

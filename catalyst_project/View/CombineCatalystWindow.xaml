@@ -5,8 +5,7 @@
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="350"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
@@ -17,17 +16,16 @@
         
         <!--Search part-->
         <Label Grid.Row="0" Grid.Column="0" Content="Search By" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <ComboBox Name="cmb_search_by" Grid.Row="0" Grid.Column="1" Height="25" Margin="5,0,0,0">
+        <ComboBox x:Name="cmb_search_by" Grid.Row="0" Grid.Column="1" Height="25" Margin="5,0,0,0" >
             <ComboBoxItem Content="ID"/>
-            <ComboBoxItem Content="Catalyst Number"/>           
+            <ComboBoxItem Content="Catalyst Nr#"/>           
         </ComboBox>
-        <TextBox Name="txb_search_value" Height="25" Grid.Row="0" Margin="5,0,0,0" Grid.Column="2"/>
-        <Button Name="btn_search_catalyst" Content="Search" Grid.Row="0" Grid.Column="3" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txb_search_value" Height="25" Grid.Row="0" Margin="5,0,0,0" Grid.Column="2"/>
+        <Button x:Name="btn_search_catalyst" Content="Search" Grid.Row="0" Grid.Column="3" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" Click="btn_search_catalyst_Click" />
         
         <!--Data Grid to show search result-->
-        <Grid Grid.Row="1" Grid.ColumnSpan="4" Background="LightBlue"></Grid>
-        <!--Choose Button-->       
-        <Button Name="btn_choose_catalyst" Content="Choose Catalyst" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Click="btn_choose_catalyst_Click"/>
-        
+        <DataGrid x:Name="grid_result" Grid.Row="1" Grid.ColumnSpan="4" Background="LightBlue"   ScrollViewer.CanContentScroll="True"  ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="440" Width="500"  SelectionMode="Single" IsReadOnly="True" MouseDoubleClick="grid_result_MouseDoubleClick" ></DataGrid>
+        <!--Choose Button-->
+
     </Grid>
 </Window>

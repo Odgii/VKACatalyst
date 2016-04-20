@@ -22,11 +22,11 @@
 
         <!--Bug Explanation-->
         <Label Grid.Row="1" Grid.Column="0" Content="Bug Explanation"/>
-        <TextBox  x:Uid="txb_soft_comment" Grid.Row="2" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="280"/>
+        <TextBox  x:Name="txb_soft_comment" Grid.Row="2" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="280"/>
        
 
         <!--Button To Submit-->
-        <Button Name="btn_soft_submit" Grid.Row="3" Grid.Column="0" Width="100" HorizontalAlignment="Center" Content="Submit" Height="25" VerticalAlignment="Bottom"/>
+        <Button Name="btn_soft_submit" Grid.Row="3" Grid.Column="0" Width="100" Click="btn_soft_submit_Click" HorizontalAlignment="Center" Content="Submit" Height="25" VerticalAlignment="Bottom"/>
 
 
 

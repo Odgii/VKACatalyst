@@ -47,6 +47,24 @@ namespace catalyst_project.Database
             }
             return washcoats;
         }
+
+        public ObservableCollection<WashcoatCatalyticComposition> populateHalfWashcoats()
+        {
+            ObservableCollection<WashcoatCatalyticComposition> washcoats = new ObservableCollection<WashcoatCatalyticComposition>();
+            List<string>[] list = database.Select("select * from washcoatmaterial ");
+            for (int i = 0; i < list[0].Count(); i++)
+            {
+                string idstring = list[0][i];
+                int id = Convert.ToInt32(idstring);
+                string name = list[1][i];
+                bool needs = Convert.ToBoolean(list[2][i]);
+                if (needs == false) {
+                    WashcoatCatalyticComposition w = new WashcoatCatalyticComposition(false, id, name, needs);
+                    washcoats.Add(w);
+                }
+            }
+            return washcoats;
+        }
         public ObservableCollection<MonolithMaterial> populateMonolithMaterials() 
         {
             ObservableCollection<MonolithMaterial> materials = new ObservableCollection<MonolithMaterial>();

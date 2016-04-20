@@ -20,7 +20,7 @@ namespace catalyst_project.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public User(int user_id, string user_role, string user_code, string first_name, string last_name, string password, string institute, string registered_date)
+        public User(int user_id, string user_role, string user_code, string first_name, string last_name, string password)
         {
             Id = user_id;
             Role = user_role;
@@ -28,8 +28,6 @@ namespace catalyst_project.Model
             First_name = first_name;
             Last_name = last_name;
             Password = password;
-            Institute = institute;
-            Registered_date = registered_date;
         }
 
         public User()

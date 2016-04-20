@@ -52,10 +52,10 @@
 
         <!--Comment  for Error Field-->
         <Label Grid.Row="6" Grid.Column="0" Content="Comment"/>
-        <TextBox  x:Uid="txb_err_comment" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="160"/>
+        <TextBox  x:Name="txb_err_comment" Grid.Row="6" Grid.Column="1" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="160"/>
         
         <!--Button To Submit-->
-        <Button Name="btn_err_submit" Grid.Row="7" Grid.ColumnSpan="2" Width="100" HorizontalAlignment="Center" Content="Submit" Height="25" VerticalAlignment="Bottom"/>
+        <Button Name="btn_err_submit" Grid.Row="7" Grid.ColumnSpan="2" Width="100" HorizontalAlignment="Center" Content="Submit" Height="25" VerticalAlignment="Bottom" Click="btn_err_submit_Click"/>
 
     </Grid>
 </Window>

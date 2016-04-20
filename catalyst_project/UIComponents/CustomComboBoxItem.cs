@@ -52,10 +52,8 @@ namespace catalyst_project.UIComponents
         private String _Name;
         private String _TableName;
         private String _FieldName;
-        private String _FieldName1;
-        private String _FieldValue1;
-        private String _FieldName2;
-        private String _FieldValue2;
+        private String _JoinQuery;
+        private String _WhereClause;
         private bool _isCombobox;
         private bool _isTextBox;
         private bool _isNumber;
@@ -69,15 +67,13 @@ namespace catalyst_project.UIComponents
         private String _SelectedValuePath;
         private Array _DBModelCollection;
 
-        public CustomComboBoxItem(String name, String table_name, String field_name, String field_name1, String field_val1, String field_name2, String field_val2, bool is_TextBox, bool is_Number, bool unit_is_Convertible, String unit, String unit_field, Array unit_collection, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath)
+        public CustomComboBoxItem(String name, String table_name, String field_name, String join_query, String where_clause, bool is_TextBox, bool is_Number, bool unit_is_Convertible, String unit, String unit_field, Array unit_collection, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath)
         {
             Name = name;
             TableName = table_name;
             FieldName = field_name;
-            FieldName1 = field_name1;
-            FieldName2 = field_name2;
-            FieldValue1 = field_val1;
-            FieldValue2 = field_val2;
+            JoinQuery = join_query;
+            WhereClause = where_clause;
             IsComboBox = is_Combobox;
             IsDateTimePicker = is_DateTimePicker;
             IsTextBox = is_TextBox;
@@ -92,15 +88,13 @@ namespace catalyst_project.UIComponents
         }
 
 
-        public CustomComboBoxItem(String name, String table_name, String field_name, String field_name1, String field_val1, String field_name2, String field_val2, bool is_TextBox, bool is_Number, bool unit_is_Convertible, String unit, String unit_field, Array unit_collection, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath, Array sourceCollection)
+        public CustomComboBoxItem(String name, String table_name, String field_name, String join_query, String where_clause, bool is_TextBox, bool is_Number, bool unit_is_Convertible, String unit, String unit_field, Array unit_collection, bool is_DateTimePicker, bool is_Combobox, bool is_MultipleChoice, String selected_valuepath, String displayed_memberPath, Array sourceCollection)
         {
             Name = name;
             TableName = table_name;
             FieldName = field_name;
-            FieldName1 = field_name1;
-            FieldName2 = field_name2;
-            FieldValue1 = field_val1;
-            FieldValue2 = field_val2;
+            JoinQuery = join_query;
+            WhereClause = where_clause;
             IsComboBox = is_Combobox;
             IsDateTimePicker = is_DateTimePicker;
             DBModelCollection = sourceCollection;
@@ -114,57 +108,30 @@ namespace catalyst_project.UIComponents
             SelectedValuePath = selected_valuepath;
         }
 
-        public String FieldName1
+        public String JoinQuery
         {
             get
             {
-                return _FieldName1;
+                return _JoinQuery;
             }
 
             set
             {
-                _FieldName1 = value;
+                _JoinQuery = value;
             }
 
         }
 
-        public String FieldName2
+        public String WhereClause
         {
             get
             {
-                return _FieldName2;
+                return _WhereClause;
             }
 
             set
             {
-                _FieldName2 = value;
-            }
-
-        }
-
-        public String FieldValue1
-        {
-            get
-            {
-                return _FieldValue1;
-            }
-
-            set
-            {
-                _FieldValue1 = value;
-            }
-        }
-
-        public String FieldValue2
-        {
-            get
-            {
-                return _FieldValue2;
-            }
-
-            set
-            {
-                _FieldValue2 = value;
+                _WhereClause = value;
             }
 
         }
