@@ -46,32 +46,46 @@ namespace catalyst_project.UIComponents
     /// </summary>
     public class CustomTextBox : TextBox
     {
-        private String _TableName;
-        private String _FieldName;
-        private String _ContentType;
         public CustomTextBox()
         {
 
         }
 
-        public static DependencyProperty hasTableName =
-        DependencyProperty.Register("TableName", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+        public static  DependencyProperty TableProperty =
+        DependencyProperty.Register("TableName", typeof(String), typeof(CustomTextBox));
 
-        public static DependencyProperty hasFieldName =
-        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+        public static DependencyProperty FieldProperty =
+        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomTextBox));
 
+        public static DependencyProperty UpdateProperty =
+        DependencyProperty.Register("UpdateId", typeof(String), typeof(CustomTextBox));
 
-        public static DependencyProperty hasContentType =
-        DependencyProperty.Register("ContentType", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+        public static DependencyProperty ControlTypeProperty =
+        DependencyProperty.Register("ContentType", typeof(String), typeof(CustomTextBox));
+
+        public static DependencyProperty UpdateHelperProperty =
+        DependencyProperty.Register("UpdateHelper", typeof(String), typeof(CustomTextBox));
+
+        public String UpdateHelper
+        {
+            get
+            {
+                return (String)GetValue(UpdateHelperProperty); ;
+            }
+            set
+            {
+                SetValue(UpdateHelperProperty, value);
+            }
+        }
         public String TableName
         {
             get
             {
-                return _TableName;
+                return (String)GetValue(TableProperty); ;
             }
             set
             {
-                _TableName = value;
+                SetValue(TableProperty, value);
             }
         }
 
@@ -79,11 +93,23 @@ namespace catalyst_project.UIComponents
         {
             get
             {
-                return _FieldName;
+                return (String)GetValue(FieldProperty); ;
             }
             set
             {
-                _FieldName = value;
+                SetValue(FieldProperty, value);
+            }
+        }
+
+        public String UpdateId
+        {
+            get
+            {
+                return (String)GetValue(UpdateProperty); ;
+            }
+            set
+            {
+                SetValue(UpdateProperty, value);
             }
         }
 
@@ -91,11 +117,11 @@ namespace catalyst_project.UIComponents
         {
             get
             {
-                return _ContentType;
+                return (String)GetValue(ControlTypeProperty); ;
             }
             set
             {
-                _ContentType = value;
+                SetValue(ControlTypeProperty, value);
             }
         }
     }

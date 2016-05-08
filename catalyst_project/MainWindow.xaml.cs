@@ -40,7 +40,7 @@ namespace catalyst_project
             if (user_id > 0)
             {
                 UserID = user_id;
-             //   SearchWindow new_app = new SearchWindow();
+             //  SearchWindow new_app = new SearchWindow();
                 MainApplication new_app = new MainApplication();
                 new_app.Show();
                 this.Close();

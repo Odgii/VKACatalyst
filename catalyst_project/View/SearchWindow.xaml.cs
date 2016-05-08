@@ -1028,7 +1028,6 @@ namespace catalyst_project.View
                 
                 string searchQuery = "" ;
                 if (searchParamters[i].IsTextBox && searchParamters[i].IsNumber) {
-                    MessageBox.Show("get result : cmb_" + searchParamters[i].FieldName);
                     CustomComboBox comboBox = (CustomComboBox)grid_search.FindName("cmb_" + searchParamters[i].FieldName);
                     
                     if (comboBox!=null && !comboBox.Text.Equals("")) {
@@ -1040,7 +1039,6 @@ namespace catalyst_project.View
                             if (first != null && second != null) {
                                 if (!first.Equals("") && !second.Equals(""))
                                 {
-                                    MessageBox.Show(searchParamters[i].WhereClause);
                                     searchQuery = searchParamters[i].WhereClause;
                                     searchQuery = searchQuery + " between " + first.Text + " and " + second.Text + " ";
                                 }
@@ -1052,7 +1050,6 @@ namespace catalyst_project.View
                             if (second != null) {
                                 if (!second.Text.Equals(""))
                                 {
-                                    MessageBox.Show(searchParamters[i].WhereClause);
                                     searchQuery = searchParamters[i].WhereClause;
                                     searchQuery = " " + search_t + " " + second.Text;
                                 }
@@ -1063,7 +1060,6 @@ namespace catalyst_project.View
                 if (searchParamters[i].IsTextBox && searchParamters[i].IsNumber == false) {
                     CustomTextBox textBox = (CustomTextBox)grid_search.FindName("txb_" + searchParamters[i].FieldName);
                     if (textBox != null && !textBox.Text.Equals("")) {
-                        MessageBox.Show(searchParamters[i].WhereClause);
                         searchQuery = searchParamters[i].WhereClause;
                         searchQuery = searchQuery + " like " + "'%" +textBox.Text + "%'";
                     }
@@ -1071,7 +1067,6 @@ namespace catalyst_project.View
                 if (searchParamters[i].IsComboBox) {
                     CustomComboBox comboBox = (CustomComboBox)grid_search.FindName("cmb_" + searchParamters[i].FieldName);                   
                     if (comboBox!=null && !comboBox.Text.Equals("")) {
-                        MessageBox.Show(searchParamters[i].WhereClause);
                         searchQuery = searchParamters[i].WhereClause;
                         searchQuery = searchQuery + "="+comboBox.SelectedValue;
                     }
@@ -1096,7 +1091,6 @@ namespace catalyst_project.View
                     query = query + searchQuery;
                 }
             }
-            MessageBox.Show(query);
             datagrid_result.ItemsSource = s.getSearchResult(8, query);
         }
 

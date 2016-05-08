@@ -47,27 +47,29 @@ namespace catalyst_project.UIComponents
     public class CustomCheckBox : CheckBox
     {   
         
-        private String _TableName;
-        private String _FieldName;
         public CustomCheckBox()
         {
 
         }
 
-        public static DependencyProperty hasTableName =
+        public static DependencyProperty TableProperty =
         DependencyProperty.Register("TableName", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
 
-        public static DependencyProperty hasFieldName =
+        public static DependencyProperty FieldProperty =
         DependencyProperty.Register("FieldName", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
+
+        public static DependencyProperty UpdateProperty =
+        DependencyProperty.Register("UpdateId", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
+
         public String TableName
         {
             get
             {
-                return _TableName;
+                return (String)GetValue(TableProperty); ;
             }
             set
             {
-                _TableName = value;
+                SetValue(TableProperty, value);
             }
         }
 
@@ -75,11 +77,23 @@ namespace catalyst_project.UIComponents
         {
             get
             {
-                return _FieldName;
+                return (String)GetValue(FieldProperty); ;
             }
             set
             {
-                _FieldName = value;
+                SetValue(FieldProperty, value);
+            }
+        }
+
+        public String UpdateId
+        {
+            get
+            {
+                return (String)GetValue(UpdateProperty); ;
+            }
+            set
+            {
+                SetValue(UpdateProperty, value);
             }
         }
     }
