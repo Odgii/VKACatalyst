@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Data.SQLite;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,7 +16,7 @@ namespace catalyst_project.View
     /// </summary>
     public partial class AdminWindow : Window
     {
-        DBConnection dbconnection;
+        SqliteDBConnection dbconnection;
         private PopulateAdminPanel populateAdminFromDb;
         private PopulateDropdownsFromDB populateDropdownsFromDb;
 
@@ -40,7 +41,7 @@ namespace catalyst_project.View
 
         public AdminWindow()
         {
-            dbconnection = new DBConnection();
+            dbconnection = new SqliteDBConnection();
             InitializeComponent();
             populateAdminFromDb = new PopulateAdminPanel();
             populateDropdownsFromDb = new PopulateDropdownsFromDB();
@@ -137,8 +138,8 @@ namespace catalyst_project.View
             Button btn = (Button)sender;
             if (btn.Name == "btn_user_add" && txb_userfirst.Text != "" && cmb_userrole.Text != "" )
             {
-                MySqlCommand cmd_user_add = new MySqlCommand();
-                cmd_user_add.CommandText = "insert user (user_role_id, user_code, user_firstname, user_lastname, user_password, user_institute, user_registered) values (@user_role_id, @user_code, @user_firstname, @user_lastname, @user_password, @user_institute, @user_registered)";
+                SQLiteCommand cmd_user_add = new SQLiteCommand();
+                cmd_user_add.CommandText = "insert into user (user_role_id, user_code, user_firstname, user_lastname, user_password, user_institute, user_registered) values (@user_role_id, @user_code, @user_firstname, @user_lastname, @user_password, @user_institute, @user_registered)";
                 cmd_user_add.Parameters.AddWithValue("@user_role_id", cmb_userrole.Text == "" ? 0 : cmb_userrole.SelectedValue);
                 cmd_user_add.Parameters.AddWithValue("@user_code", txb_usercode.Text);
                 cmd_user_add.Parameters.AddWithValue("@user_firstname", txb_userfirst.Text);
@@ -153,7 +154,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_user_update" && txb_userid.Text != "")
             {
-                 MySqlCommand cmd_user_update = new MySqlCommand();
+                 SQLiteCommand cmd_user_update = new SQLiteCommand();
                  cmd_user_update.CommandText = "update user set user_role_id = @user_role, user_password = @user_password, user_code = @user_code, user_firstname = @user_firstname, user_lastname = @user_lastname, user_institute = @user_institute where user_id = @user_id";
                  cmd_user_update.Parameters.AddWithValue("@user_role", cmb_userrole.Text == "" ? 0 : cmb_userrole.SelectedValue);
                  cmd_user_update.Parameters.AddWithValue("@user_code", txb_usercode.Text);
@@ -173,7 +174,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_user_delete" && txb_userid.Text != "")
             {
-                MySqlCommand cmd_user_delete = new MySqlCommand();
+                SQLiteCommand cmd_user_delete = new SQLiteCommand();
                 cmd_user_delete.CommandText = "delete from user where user_id = @user_id";
                 cmd_user_delete.Parameters.AddWithValue("@user_id", Convert.ToInt32(txb_userid.Text));
                 dbconnection.Delete(cmd_user_delete);
@@ -286,7 +287,7 @@ namespace catalyst_project.View
             Button btn = (Button)sender;
             if (btn.Name == "btn_manu_add" && txb_manufac.Text != "")
             {
-                MySqlCommand cmd_manu_add = new MySqlCommand();
+                SQLiteCommand cmd_manu_add = new SQLiteCommand();
                 cmd_manu_add.CommandText = "insert into catalystmanufacturer(manufacturer_name) values (@name)";
                 cmd_manu_add.Parameters.AddWithValue("@name", txb_manufac.Text);
                 dbconnection.Insert(cmd_manu_add);
@@ -298,7 +299,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_manu_update" && txb_manufac_id.Text != "")
             {
-                MySqlCommand cmd_manu_update = new MySqlCommand();
+                SQLiteCommand cmd_manu_update = new SQLiteCommand();
                 cmd_manu_update.CommandText = "update catalystmanufacturer set manufacturer_name = @name where manufacturer_id = @id";
                 cmd_manu_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_manufac_id.Text));
                 cmd_manu_update.Parameters.AddWithValue("@name", txb_manufac.Text);
@@ -315,7 +316,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_manu_delete" && txb_manufac_id.Text != "")
             {
-                MySqlCommand cmd_manu_delete = new MySqlCommand();
+                SQLiteCommand cmd_manu_delete = new SQLiteCommand();
                 cmd_manu_delete.CommandText = "delete from catalystmanufacturer where manufacturer_id = @id";
                 cmd_manu_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_manufac_id.Text));
                 dbconnection.Delete(cmd_manu_delete);
@@ -363,7 +364,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_mono_add" && txb_monolith.Text != "" && txb_monolith.Text != null)
             {
-                MySqlCommand cmd_mon_add = new MySqlCommand();
+                SQLiteCommand cmd_mon_add = new SQLiteCommand();
                 cmd_mon_add.CommandText = "insert into monolithmaterial (monolith_material) values (@material)";
                 cmd_mon_add.Parameters.AddWithValue("@material", txb_monolith.Text);
                 dbconnection.Insert(cmd_mon_add);
@@ -375,7 +376,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_mono_update" && txb_monolith_id.Text != "")
             {
-                MySqlCommand cmd_mono_update = new MySqlCommand();
+                SQLiteCommand cmd_mono_update = new SQLiteCommand();
                 cmd_mono_update.CommandText = "update monolithmaterial set monolithmaterial = @material where monolith_material_id = @id";
                 cmd_mono_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_monolith_id.Text));
                 cmd_mono_update.Parameters.AddWithValue("@material", txb_monolith.Text);
@@ -392,7 +393,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_mono_delete")
             {
-                MySqlCommand cmd_mono_delete = new MySqlCommand();
+                SQLiteCommand cmd_mono_delete = new SQLiteCommand();
                 cmd_mono_delete.CommandText = "delete from monolithmaterial where monolith_material_id = @id";
                 cmd_mono_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_monolith_id.Text));
                 dbconnection.Delete(cmd_mono_delete);
@@ -437,7 +438,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_shape_add" && txb_shape.Text != "" )
             {
-                MySqlCommand cmd_shape_add = new MySqlCommand();
+                SQLiteCommand cmd_shape_add = new SQLiteCommand();
                 cmd_shape_add.CommandText = "insert into substrateboundaryshape (shape) values (@shape)";
                 cmd_shape_add.Parameters.AddWithValue("@shape", txb_shape.Text);
                 dbconnection.Insert(cmd_shape_add);
@@ -449,7 +450,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_shape_update" && txb_shape_id.Text != "")
             {
-                MySqlCommand cmd_shape_update = new MySqlCommand();
+                SQLiteCommand cmd_shape_update = new SQLiteCommand();
                 cmd_shape_update.CommandText = "update substrateboundaryshape set shape = @shape where shape_id = @id";
                 cmd_shape_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_shape_id.Text));
                 cmd_shape_update.Parameters.AddWithValue("@shape", txb_shape.Text);
@@ -466,7 +467,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_shape_delete" && txb_shape_id.Text != "")
             {
-                MySqlCommand cmd_shape_delete = new MySqlCommand();
+                SQLiteCommand cmd_shape_delete = new SQLiteCommand();
                 cmd_shape_delete.CommandText = "delete from substrateboundaryshape where shape_id = @id";
                 cmd_shape_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_shape_id.Text));
                 dbconnection.Delete(cmd_shape_delete);
@@ -514,7 +515,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_app_add" && txb_appfield.Text != "")
             {
-                MySqlCommand cmd_app_add = new MySqlCommand();
+                SQLiteCommand cmd_app_add = new SQLiteCommand();
                 cmd_app_add.CommandText = "insert into applicationfield (app_field) values (@app_field)";
                 cmd_app_add.Parameters.AddWithValue("@app_field", txb_appfield.Text);
                 dbconnection.Insert(cmd_app_add);
@@ -526,7 +527,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_app_update" && txb_appfield_id.Text != "")
             {
-                MySqlCommand cmd_app_update = new MySqlCommand();
+                SQLiteCommand cmd_app_update = new SQLiteCommand();
                 cmd_app_update.CommandText = "update applicationfield set app_field = @app_field where app_field_id = @id";
                 cmd_app_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_appfield_id.Text));
                 cmd_app_update.Parameters.AddWithValue("@app_field", txb_appfield.Text);
@@ -543,7 +544,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_app_delete" && txb_appfield_id.Text != "")
             {
-                MySqlCommand cmd_app_delete = new MySqlCommand();
+                SQLiteCommand cmd_app_delete = new SQLiteCommand();
                 cmd_app_delete.CommandText = "delete from applicationfield where app_field_id = @id";
                 cmd_app_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_appfield_id.Text));
                 dbconnection.Delete(cmd_app_delete);
@@ -589,7 +590,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_proc_add" && txb_proc.Text != "")
             {
-                MySqlCommand cmd_proc_add = new MySqlCommand();
+                SQLiteCommand cmd_proc_add = new SQLiteCommand();
                 cmd_proc_add.CommandText = "insert into agingprocedure (aging_procedure) values (@aging_procedure)";
                 cmd_proc_add.Parameters.AddWithValue("@aging_procedure", txb_proc.Text);
                 dbconnection.Insert(cmd_proc_add);
@@ -601,7 +602,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_proc_update" && txb_proc_id.Text != "")
             {
-                MySqlCommand cmd_proc_update = new MySqlCommand();
+                SQLiteCommand cmd_proc_update = new SQLiteCommand();
                 cmd_proc_update.CommandText = "update agingprocedure set aging_procedure = @aging_procedure where aging_procedure_id = @id";
                 cmd_proc_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_proc_id.Text));
                 cmd_proc_update.Parameters.AddWithValue("@aging_procedure", txb_proc.Text);
@@ -618,7 +619,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_proc_delete" && txb_proc_id.Text != "")
             {
-                MySqlCommand cmd_proc_delete = new MySqlCommand();
+                SQLiteCommand cmd_proc_delete = new SQLiteCommand();
                 cmd_proc_delete.CommandText = "delete from agingprocedure where aging_procedure_id = @id";
                 cmd_proc_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_proc_id.Text));
                 dbconnection.Delete(cmd_proc_delete);
@@ -667,7 +668,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_washcoat_add" && txb_washcoat.Text != "")
             {
-                MySqlCommand cmd_washcoat_add = new MySqlCommand();
+                SQLiteCommand cmd_washcoat_add = new SQLiteCommand();
                 cmd_washcoat_add.CommandText = "insert into washcoat_material (material, has_precious_metal) values (@material, @has_precious_metal)";
                 cmd_washcoat_add.Parameters.AddWithValue("@material", txb_washcoat.Text);
                 cmd_washcoat_add.Parameters.AddWithValue("@has_precious_metal", chk_washcoat_metal.IsChecked);
@@ -680,7 +681,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_washcoat_update" && txb_washcoat_id.Text != "")
             {
-                MySqlCommand cmd_washcoat_update = new MySqlCommand();
+                SQLiteCommand cmd_washcoat_update = new SQLiteCommand();
                 cmd_washcoat_update.CommandText = "update washcoat_material set material = @material, has_precious_metal = @has_precious_metal where material_id = @id";
                 cmd_washcoat_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_washcoat_id.Text));
                 cmd_washcoat_update.Parameters.AddWithValue("@material", txb_washcoat.Text);
@@ -698,7 +699,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_washcoat_delete" && txb_washcoat_id.Text != "")
             {
-                MySqlCommand cmd_washcoat_delete = new MySqlCommand();
+                SQLiteCommand cmd_washcoat_delete = new SQLiteCommand();
                 cmd_washcoat_delete.CommandText = "delete from washcoat_material where material_id = @id";
                 cmd_washcoat_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_washcoat_id.Text));
                 dbconnection.Delete(cmd_washcoat_delete);
@@ -745,7 +746,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_emission_add" && txb_emission.Text != "")
             {
-                MySqlCommand cmd_emission_add = new MySqlCommand();
+                SQLiteCommand cmd_emission_add = new SQLiteCommand();
                 cmd_emission_add.CommandText = "insert into emission (emission) values (@emission)";
                 cmd_emission_add.Parameters.AddWithValue("@emission", txb_emission.Text);
                 dbconnection.Insert(cmd_emission_add);
@@ -757,7 +758,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_emission_update" && txb_emission_id.Text != "")
             {
-                MySqlCommand cmd_emission_update = new MySqlCommand();
+                SQLiteCommand cmd_emission_update = new SQLiteCommand();
                 cmd_emission_update.CommandText = "update emission set emission = @emission where emission_id = @id";
                 cmd_emission_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_emission_id.Text));
                 cmd_emission_update.Parameters.AddWithValue("@emission", txb_emission.Text);
@@ -774,7 +775,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_emission_delete" && txb_emission_id.Text != "")
             {
-                MySqlCommand cmd_emission_delete = new MySqlCommand();
+                SQLiteCommand cmd_emission_delete = new SQLiteCommand();
                 cmd_emission_delete.CommandText = "delete from emission where emission_id = @id";
                 cmd_emission_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_emission_id.Text));
                 dbconnection.Delete(cmd_emission_delete);
@@ -820,7 +821,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_transient_add" && txb_transient.Text != "")
             {
-                MySqlCommand cmd_transient_add = new MySqlCommand();
+                SQLiteCommand cmd_transient_add = new SQLiteCommand();
                 cmd_transient_add.CommandText = "insert into transientlegislationcycle (cycle_certificate) values (@cycle_certificate)";
                 cmd_transient_add.Parameters.AddWithValue("@cycle_certificate", txb_transient.Text);
                 dbconnection.Insert(cmd_transient_add);
@@ -832,7 +833,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_transient_update" && txb_transient_id.Text != "")
             {
-                MySqlCommand cmd_transient_update = new MySqlCommand();
+                SQLiteCommand cmd_transient_update = new SQLiteCommand();
                 cmd_transient_update.CommandText = "update transientlegislationcycle set cycle_certificate = @cycle_certificate where transient_id = @id";
                 cmd_transient_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_transient_id.Text));
                 cmd_transient_update.Parameters.AddWithValue("@cycle_certificate", txb_transient.Text);
@@ -849,7 +850,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_transient_delete" && txb_transient_id.Text != "")
             {
-                MySqlCommand cmd_transient_delete = new MySqlCommand();
+                SQLiteCommand cmd_transient_delete = new SQLiteCommand();
                 cmd_transient_delete.CommandText = "delete from transientlegislationcycle where transient_id = @id";
                 cmd_transient_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_transient_id.Text));
                 dbconnection.Delete(cmd_transient_delete);
@@ -896,7 +897,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_steady_add" && txb_steady.Text != "")
             {
-                MySqlCommand cmd_steady_add = new MySqlCommand();
+                SQLiteCommand cmd_steady_add = new SQLiteCommand();
                 cmd_steady_add.CommandText = "insert into steadystatelegislationcycle (cycle_certificate) values (@cycle_certificate)";
                 cmd_steady_add.Parameters.AddWithValue("@cycle_certificate", txb_steady.Text);
                 dbconnection.Insert(cmd_steady_add);
@@ -908,7 +909,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_steady_update" && txb_steady_id.Text != "")
             {
-                MySqlCommand cmd_steady_update = new MySqlCommand();
+                SQLiteCommand cmd_steady_update = new SQLiteCommand();
                 cmd_steady_update.CommandText = "update steadystatelegislationcycle set cycle_certificate = @cycle_certificate where steady_state_id = @id";
                 cmd_steady_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_steady_id.Text));
                 cmd_steady_update.Parameters.AddWithValue("@cycle_certificate", txb_steady.Text);
@@ -925,7 +926,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_steady_delete" && txb_steady_id.Text != "")
             {
-                MySqlCommand cmd_steady_delete = new MySqlCommand();
+                SQLiteCommand cmd_steady_delete = new SQLiteCommand();
                 cmd_steady_delete.CommandText = "delete from steadystatelegislationcycle where steady_state_id = @id";
                 cmd_steady_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_steady_id.Text));
                 dbconnection.Delete(cmd_steady_delete);
@@ -971,7 +972,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_modeltype_add" && txb_modeltype.Text != "")
             {
-                MySqlCommand cmd_modeltype_add = new MySqlCommand();
+                SQLiteCommand cmd_modeltype_add = new SQLiteCommand();
                 cmd_modeltype_add.CommandText = "insert into modeltype (model_type) values (@modeltype)";
                 cmd_modeltype_add.Parameters.AddWithValue("@modeltype", txb_modeltype.Text);
                 dbconnection.Insert(cmd_modeltype_add);
@@ -983,7 +984,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_modeltype_update" && txb_modeltype_id.Text != "")
             {
-                MySqlCommand cmd_modeltype_update = new MySqlCommand();
+                SQLiteCommand cmd_modeltype_update = new SQLiteCommand();
                 cmd_modeltype_update.CommandText = "update modeltype set model_type = @modeltype where model_type_id = @id";
                 cmd_modeltype_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_modeltype_id.Text));
                 cmd_modeltype_update.Parameters.AddWithValue("@modeltype", txb_modeltype.Text);
@@ -1000,7 +1001,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_modeltype_delete" && txb_modeltype_id.Text != "")
             {
-                MySqlCommand cmd_modeltype_delete = new MySqlCommand();
+                SQLiteCommand cmd_modeltype_delete = new SQLiteCommand();
                 cmd_modeltype_delete.CommandText = "delete from modeltype where model_type_id = @id";
                 cmd_modeltype_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_modeltype_id.Text));
                 dbconnection.Delete(cmd_modeltype_delete);
@@ -1045,7 +1046,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_tool_add" && txb_tool.Text != "")
             {
-                MySqlCommand cmd_tool_add = new MySqlCommand();
+                SQLiteCommand cmd_tool_add = new SQLiteCommand();
                 cmd_tool_add.CommandText = "insert into simulationtool (simulation_tool) values (@simulation_tool)";
                 cmd_tool_add.Parameters.AddWithValue("@simulation_tool", txb_tool.Text);
                 dbconnection.Insert(cmd_tool_add);
@@ -1057,7 +1058,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_tool_update" && txb_tool_id.Text != "")
             {
-                MySqlCommand cmd_tool_update = new MySqlCommand();
+                SQLiteCommand cmd_tool_update = new SQLiteCommand();
                 cmd_tool_update.CommandText = "update simulationtool set simulation_tool = @simulation_tool where tool_id = @id";
                 cmd_tool_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_tool_id.Text));
                 cmd_tool_update.Parameters.AddWithValue("@simulation_tool", txb_tool.Text);
@@ -1074,7 +1075,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_tool_delete" && txb_tool_id.Text != "")
             {
-                MySqlCommand cmd_tool_delete = new MySqlCommand();
+                SQLiteCommand cmd_tool_delete = new SQLiteCommand();
                 cmd_tool_delete.CommandText = "delete from simulationtool where tool_id = @id";
                 cmd_tool_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_tool_id.Text));
                 dbconnection.Delete(cmd_tool_delete);
@@ -1122,7 +1123,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_bug_update")
             {
-                MySqlCommand cmd_bug_update = new MySqlCommand();
+                SQLiteCommand cmd_bug_update = new SQLiteCommand();
                 cmd_bug_update.CommandText = "update bugs set isFixed = @isFixed where bug_id = @id";
                 cmd_bug_update.Parameters.AddWithValue("@isFixed", ckb_bugs_fixed.IsChecked);
                 cmd_bug_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_bugs_id.Text));
@@ -1133,7 +1134,7 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_bug_delete")
             {
-                MySqlCommand cmd_bug_delete = new MySqlCommand();
+                SQLiteCommand cmd_bug_delete = new SQLiteCommand();
                 cmd_bug_delete.CommandText = "delete from bugs where bug_id = @id";
                 cmd_bug_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_bugs_id.Text));
                 dbconnection.Delete(cmd_bug_delete);
@@ -1277,7 +1278,7 @@ namespace catalyst_project.View
 
             if (btn.Name == "btn_data_update" && txb_catalyst_id.Text != "")
             {
-                MySqlCommand cmd_data_update = new MySqlCommand();
+                SQLiteCommand cmd_data_update = new SQLiteCommand();
                 cmd_data_update.CommandText = "update catalyst set review_comment = @review_comment, is_approved = @is_approved where catalyst_id = @id";
                 cmd_data_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_catalyst_id.Text));
                 cmd_data_update.Parameters.AddWithValue("@is_approved", ckb_catalyst_approved.IsChecked);

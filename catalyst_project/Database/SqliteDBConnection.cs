@@ -102,6 +102,14 @@ namespace catalyst_project.Database
             }
         }
 
+        public bool EntryExist(string query) {
+            List<string>[] result = Select(query);
+            if (result != null && result[0].Count > 0) {
+                return true;
+            }
+            return false;
+        }
+
 
         public List<string>[] Select( string query)
         {

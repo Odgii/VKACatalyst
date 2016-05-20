@@ -24,7 +24,9 @@ namespace catalyst_project
     public partial class MainWindow : Window
     {
         SqliteDBConnection db;
-        private int _userID = 0;
+        public static int userID = 0;
+        public static string userCode = null;
+        public static int userRole = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +41,11 @@ namespace catalyst_project
             int user_id = db.Exist(cmd);
             if (user_id > 0)
             {
-                UserID = user_id;
+                userID = user_id;
+                userCode = txb_username.Text;
+                string query = "select * from user where user_code = '" + txb_username.Text + "' and user_password = '" +txb_password.Text + "'";
+                List<string>[] userData = db.Select(query);
+                userRole = Convert.ToInt32(userData[1][0]);
              //  SearchWindow new_app = new SearchWindow();
                 MainApplication new_app = new MainApplication();
                 new_app.Show();
@@ -51,14 +57,5 @@ namespace catalyst_project
              
         }
 
-        public int UserID {
-            get {
-                return _userID;
-            }
-            set
-            {
-                _userID = value;
-            }
-        }
     }
 }
