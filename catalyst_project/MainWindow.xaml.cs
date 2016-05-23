@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using System.Globalization;
 
 namespace catalyst_project
 {
@@ -31,6 +32,15 @@ namespace catalyst_project
         {
             InitializeComponent();
             db = new SqliteDBConnection();
+        }
+
+        static MainWindow()
+        {
+            CultureInfo cultureInfo = new CultureInfo("en-US");
+            CultureInfo customCulture = (CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
         }
 
         private void LoginClicked(object sender, RoutedEventArgs e)

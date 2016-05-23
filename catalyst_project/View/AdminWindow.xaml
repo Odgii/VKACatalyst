@@ -18,7 +18,13 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <Label Content="Search By" Width="200"></Label>
-                            <ComboBox Width="200" Name="cmb_history_search_by" />
+                            <ComboBox Width="200" Name="cmb_history_search_by" >
+                                <ComboBoxItem Content="Catalyst ID"/>
+                                <ComboBoxItem Content="User Name"/>
+                                <ComboBoxItem Content="Action"/>
+                                <ComboBoxItem Content="Group Name"/>
+                                <ComboBoxItem Content="Field Name"/>
+                            </ComboBox>
                             <TextBox Width="200" Name="txb_history_search_val" Margin ="20,0,0,0"/>
                             <Button Content="Search" Name="btn_history_search" Margin="20,0,0,0" Width="50" Click="btns_history_Click"/>
                         </StackPanel>
@@ -30,20 +36,21 @@
                         </StackPanel>
                     </StackPanel>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue">
-                        <Grid >
-                            <DataGrid Grid.Column="0" Grid.Row="1" Width="1120"   Margin="10" Name="grid_history" SelectionChanged="grid_history_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="1120" >
+                            <DataGrid Grid.Column="0" Grid.Row="1"   Margin="10" Name="grid_history" SelectionChanged="grid_history_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" >
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Name" Width="100" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="#" Width="50" Binding="{Binding Id}" />
+                                    <DataGridTextColumn Header="User" Width="100" Binding="{Binding User_name}" />
+                                    <DataGridTextColumn Header="Action" Width="100" Binding="{Binding User_action}" />
                                     <DataGridTextColumn Header="Catalyst ID" Width="100" Binding="{Binding Catalyst_id}" />
                                     <DataGridTextColumn Header="Data Group" Width="200" Binding="{Binding Group_name}" />
-                                    <DataGridTextColumn Header="Field Name" Width="200" Binding="{Binding Field_name}" />
-                                    <DataGridTextColumn Header="User" Width="100" Binding="{Binding User_name}" />
+                                    <DataGridTextColumn Header="Field Name" Width="200" Binding="{Binding Field_name}" />                                   
                                     <DataGridTextColumn Header="Old Value" Width="150" Binding="{Binding Old_value}" />
                                     <DataGridTextColumn Header="New Value" Width="150" Binding="{Binding New_value}" />
-                                    <DataGridTextColumn Header="Date" Width="110" Binding="{Binding ModifiedDate}" />
+                                    <DataGridTextColumn Header="Date" Width="80" Binding="{Binding ModifiedDate}" />
                                 </DataGrid.Columns>
                             </DataGrid>
-                        </Grid>
+                        </ScrollViewer>
                     </Border>
                 </Grid>                           
             </TabItem>
@@ -72,7 +79,7 @@
                         <Button Width="50" Content="Search" Name="btn_user_search" Margin="20,0,0,0" Click="btns_user_Click"/>
                     </StackPanel>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue">
-                        <Grid >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                             <DataGrid Width="1130" Height="500"  Name="grid_user" AutoGenerateColumns="False" SelectionChanged="grid_user_SelectionChanged" SelectionMode="Single" IsReadOnly="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}" />
@@ -85,7 +92,7 @@
                                 <DataGridTextColumn Header="Registered" Width="122" Binding="{Binding Registered_date}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     </Border>
                     <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" >
                         <StackPanel Orientation="Vertical">
@@ -147,14 +154,14 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                        <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_manufac"  SelectionChanged="grid_manufac_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Width="150" Binding="{Binding Id}" />
                             <DataGridTextColumn Header="Manufacturer" Width="200" Binding="{Binding Name}" />
                         </DataGrid.Columns>
                     </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_manu_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Manufacturer ID" Width="200"/>
@@ -183,14 +190,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                         <DataGrid Grid.Column="0" Grid.Row="0" Height="720" Width="376" Name="grid_monolith"  Margin="10" SelectionChanged="grid_monolith_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Monolith Id" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Monolith Material" Width="200" Binding="{Binding Material}" />                                
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
 
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_monolith_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
@@ -221,14 +228,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_boundary"  SelectionChanged="grid_boundary_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Shape Id" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Substrate Boundary Shape" Width="250" Binding="{Binding Shape}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_shape_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Shape ID" Width="200"/>
@@ -258,14 +265,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_appfields" SelectionChanged="grid_appfields_SelectionChanged"  SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Application Fields" Width="250" Binding="{Binding Name}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_app_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Application Field ID" Width="200"/>
@@ -295,14 +302,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_procedures" SelectionChanged="grid_procedures_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Procedure ID" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Aging Procedure" Width="250" Binding="{Binding Procedure}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_aging_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Aging Procedure ID" Width="200"/>
@@ -331,7 +338,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_washcoats" SelectionChanged="grid_washcoats_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Washcoat ID" Width="150" Binding="{Binding Id}" />
@@ -339,7 +346,7 @@
                                 <DataGridCheckBoxColumn Header="Has Precious Metal" Width="150" Binding="{Binding NeedPreciousMetal}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_washcoat_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Washcoat ID" Width="200"/>
@@ -372,14 +379,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_emissions" SelectionChanged="grid_emissions_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Emission ID" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Emission" Width="250" Binding="{Binding Name}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_emission_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content=" Emission ID" Width="200"/>
@@ -408,14 +415,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_transients" SelectionChanged="grid_transients_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Transient ID" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Cycle Certificate" Width="250" Binding="{Binding Legislation}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_transients_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content=" Transient ID" Width="200"/>
@@ -444,14 +451,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_steadys" SelectionChanged="grid_steadys_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Steady ID" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Cycle Certificate" Width="250" Binding="{Binding Legislation}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_steadys_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content=" Transient ID" Width="200"/>
@@ -480,14 +487,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_modeltypes" SelectionChanged="grid_modeltypes_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Model Type ID" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Model Type" Width="250" Binding="{Binding Type}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_modeltype_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Model Type ID" Width="200"/>
@@ -516,14 +523,14 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_tools" SelectionChanged="grid_tools_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Simulation Tool ID" Width="150" Binding="{Binding Id}" />
                                 <DataGridTextColumn Header="Simulation Tool" Width="250" Binding="{Binding Tool}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_tool_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Simulation Tool ID" Width="200"/>
@@ -552,7 +559,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue"></Border>
-                    <Grid >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_datas" SelectionChanged="grid_datas_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Catalyst ID" Width="100" Binding="{Binding Catalyst_id}" />
@@ -560,7 +567,7 @@
                                 <DataGridTextColumn Header="Review Comment"  Width="350" Binding="{Binding Review_Comment}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
+                    </ScrollViewer>
                     <StackPanel Grid.Column="1" Grid.Row="0" Name="stk_data_fields" Margin="10" Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Catalyst ID" Width="200"/>
@@ -614,8 +621,8 @@
                         </StackPanel>
                     </StackPanel>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue">
-                        <Grid>
-                            <DataGrid Grid.Column="0" Grid.Row="1" Width="1120" Height="480" Margin="10" Name="grid_bugs" SelectionChanged="grid_bugs_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Width="1120">
+                            <DataGrid Grid.Column="0" Grid.Row="1"  Height="480" Margin="10" Name="grid_bugs" SelectionChanged="grid_bugs_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}" />
                                     <DataGridTextColumn Header="Catalyst ID" Width="70" Binding="{Binding CatalystID}"/>
@@ -629,7 +636,7 @@
                                     <DataGridTextColumn Header="Date" Width="100" Binding="{Binding DetectedDate}" />
                                 </DataGrid.Columns>
                             </DataGrid>
-                        </Grid>
+                        </ScrollViewer>
                     </Border>
                     <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">

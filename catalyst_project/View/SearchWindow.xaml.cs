@@ -608,6 +608,7 @@ namespace catalyst_project.View
 
                 CustomTextBox cTextBox1 = new CustomTextBox();
                 cTextBox1.Name = "txb_" + item.FieldName;
+                MessageBox.Show("to search : " + cTextBox1.Name);
                 //register
                 grid_search.RegisterName(cTextBox1.Name, cTextBox1);
                 cTextBox1.Width = 200;
@@ -702,10 +703,12 @@ namespace catalyst_project.View
             else
             {
                 string fieldname = "txb_" + c.Name.Substring(4);
+                MessageBox.Show(fieldname);
                 CustomTextBox t = (CustomTextBox)grid_search.FindName(fieldname);
-                t.IsEnabled = false;
+                if (t != null) {
+                    t.IsEnabled = false;
+                }               
             }
-
         }
 
         private void measure_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -144,6 +144,7 @@
     <Compile Include="UIComponents\CustomComboBox.cs" />
     <Compile Include="UIComponents\CustomComboBoxItem.cs" />
     <Compile Include="UIComponents\CustomDatePicker.cs" />
+    <Compile Include="UIComponents\CustomListBox.cs" />
     <Compile Include="UIComponents\CustomTextBox.cs" />
     <Compile Include="View\CombineCatalystWindow.xaml.cs">
       <DependentUpon>CombineCatalystWindow.xaml</DependentUpon>

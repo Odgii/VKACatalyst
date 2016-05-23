@@ -52,20 +52,64 @@ namespace catalyst_project.UIComponents
         }
 
         public static  DependencyProperty TableProperty =
-        DependencyProperty.Register("TableName", typeof(String), typeof(CustomTextBox));
+        DependencyProperty.Register("TableName", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
 
         public static DependencyProperty FieldProperty =
-        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomTextBox));
+        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
 
         public static DependencyProperty UpdateProperty =
-        DependencyProperty.Register("UpdateId", typeof(String), typeof(CustomTextBox));
+        DependencyProperty.Register("UpdateId", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
 
         public static DependencyProperty ControlTypeProperty =
-        DependencyProperty.Register("ContentType", typeof(String), typeof(CustomTextBox));
+        DependencyProperty.Register("ContentType", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
 
         public static DependencyProperty UpdateHelperProperty =
-        DependencyProperty.Register("UpdateHelper", typeof(String), typeof(CustomTextBox));
+        DependencyProperty.Register("UpdateHelper", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
 
+        public static DependencyProperty LabelTitleProperty =
+        DependencyProperty.Register("LabelTitle", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+
+        public static DependencyProperty GroupTitleProperty =
+        DependencyProperty.Register("GroupTitle", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+
+        public static DependencyProperty DefaultUnitProperty =
+        DependencyProperty.Register("DefaultUnit", typeof(String), typeof(CustomTextBox), new PropertyMetadata(default(string)));
+
+        public String DefaultUnit
+        {
+            get
+            {
+                return (String)GetValue(DefaultUnitProperty); ;
+            }
+            set
+            {
+                SetValue(DefaultUnitProperty, value);
+            }
+        }
+
+        public String GroupTitle
+        {
+            get
+            {
+                return (String)GetValue(GroupTitleProperty); ;
+            }
+            set
+            {
+                SetValue(GroupTitleProperty, value);
+            }
+        }
+
+        public String LabelTitle
+        {
+            get
+            {
+                return (String)GetValue(LabelTitleProperty); ;
+            }
+            set
+            {
+                SetValue(LabelTitleProperty, value);
+            }
+        }
         public String UpdateHelper
         {
             get

@@ -41,43 +41,21 @@ namespace catalyst_project.UIComponents
     /// Step 2)
     /// Go ahead and use your control in the XAML file.
     ///
-    ///     <MyNamespace:CustomCheckBox/>
+    ///     <MyNamespace:CustomListBox/>
     ///
     /// </summary>
-    public class CustomCheckBox : CheckBox
-    {   
-        
-        public CustomCheckBox()
+    public class CustomListBox : ListBox
+    {
+        public CustomListBox()
         {
-
+            
         }
-
-        public static DependencyProperty TableProperty =
-        DependencyProperty.Register("TableName", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
-
-        public static DependencyProperty FieldProperty =
-        DependencyProperty.Register("FieldName", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
-
-        public static DependencyProperty UpdateProperty =
-        DependencyProperty.Register("UpdateId", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
 
         public static DependencyProperty LabelTitleProperty =
-        DependencyProperty.Register("LabelTitle", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
+        DependencyProperty.Register("LabelTitle", typeof(String), typeof(CustomListBox), new PropertyMetadata(default(string)));
 
         public static DependencyProperty GroupTitleProperty =
-        DependencyProperty.Register("GroupTitle", typeof(String), typeof(CustomCheckBox), new PropertyMetadata(default(string)));
-
-        public String LabelTitle
-        {
-            get
-            {
-                return (String)GetValue(LabelTitleProperty); ;
-            }
-            set
-            {
-                SetValue(LabelTitleProperty, value);
-            }
-        }
+        DependencyProperty.Register("GroupTitle", typeof(String), typeof(CustomListBox), new PropertyMetadata(default(string)));
 
         public String GroupTitle
         {
@@ -91,43 +69,17 @@ namespace catalyst_project.UIComponents
             }
         }
 
-
-
-        public String TableName
+        public String LabelTitle
         {
             get
             {
-                return (String)GetValue(TableProperty); ;
+                return (String)GetValue(LabelTitleProperty); ;
             }
             set
             {
-                SetValue(TableProperty, value);
+                SetValue(LabelTitleProperty, value);
             }
         }
 
-        public String FieldName
-        {
-            get
-            {
-                return (String)GetValue(FieldProperty); ;
-            }
-            set
-            {
-                SetValue(FieldProperty, value);
-            }
-        }
-
-        public String UpdateId
-        {
-            get
-            {
-                return (String)GetValue(UpdateProperty); ;
-            }
-            set
-            {
-                SetValue(UpdateProperty, value);
-            }
-        }
     }
-    
 }

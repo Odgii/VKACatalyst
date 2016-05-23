@@ -60,6 +60,36 @@ namespace catalyst_project.UIComponents
 
         public static DependencyProperty UpdateProperty =
         DependencyProperty.Register("UpdateId", typeof(String), typeof(CustomDatePicker), new PropertyMetadata(default(string)));
+
+        public static DependencyProperty LabelTitleProperty =
+        DependencyProperty.Register("LabelTitle", typeof(String), typeof(CustomDatePicker), new PropertyMetadata(default(string)));
+
+        public static DependencyProperty GroupTitleProperty =
+        DependencyProperty.Register("GroupTitle", typeof(String), typeof(CustomDatePicker), new PropertyMetadata(default(string)));
+
+        public String LabelTitle
+        {
+            get
+            {
+                return (String)GetValue(LabelTitleProperty); ;
+            }
+            set
+            {
+                SetValue(LabelTitleProperty, value);
+            }
+        }
+
+        public String GroupTitle
+        {
+            get
+            {
+                return (String)GetValue(GroupTitleProperty); ;
+            }
+            set
+            {
+                SetValue(GroupTitleProperty, value);
+            }
+        }
         public String TableName
         {
             get
