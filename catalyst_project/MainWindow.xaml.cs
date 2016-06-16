@@ -57,7 +57,8 @@ namespace catalyst_project
                 List<string>[] userData = db.Select(query);
                 userRole = Convert.ToInt32(userData[1][0]);
              //  SearchWindow new_app = new SearchWindow();
-                MainApplication new_app = new MainApplication();
+           //     AdminWindow new_app = new AdminWindow();
+           MainApplication new_app = new MainApplication();
                 new_app.Show();
                 this.Close();
             }

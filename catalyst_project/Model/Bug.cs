@@ -8,15 +8,15 @@ namespace catalyst_project.Model
 {
     class Bug
     {
-        private int _Id;
-        private int _CatalystID;
+        private string _Id;
+        private string _CatalystID;
         private string _BugType;
         private string _DataGroup;
         private string _ErrorFieldName;
         private string _ErrorCurrentValue;
         private string _ErrorCorrectValue;
         private string _Comment;
-        private bool _isFixed;
+        private string _isFixed;
         private string _DetectedDate;
 
         public Bug()
@@ -24,7 +24,7 @@ namespace catalyst_project.Model
         
         }
 
-        public Bug(int id, int catalyst_id, string bug_type, string data_group, string error_fieldname, string current_value, string correct_value, string comment, bool is_fixed, string detected_date)
+        public Bug(string id, string catalyst_id, string bug_type, string data_group, string error_fieldname, string current_value, string correct_value, string comment, string is_fixed, string detected_date)
         {
             Id = id;
             CatalystID = catalyst_id;
@@ -38,7 +38,7 @@ namespace catalyst_project.Model
             DetectedDate = detected_date;
         }
 
-        public int Id
+        public string Id
         {
             get
             {
@@ -50,7 +50,7 @@ namespace catalyst_project.Model
             }
         }
 
-        public int CatalystID
+        public string CatalystID
         {
             get
             {
@@ -134,7 +134,7 @@ namespace catalyst_project.Model
             }
         }
 
-        public bool isFixed
+        public string isFixed
         {
             get
             {

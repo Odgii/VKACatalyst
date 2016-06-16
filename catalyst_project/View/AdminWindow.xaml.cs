@@ -36,7 +36,7 @@ namespace catalyst_project.View
         private ObservableCollection<SimulationTool> tools;
         private ObservableCollection<Bug> bugs;
         private ObservableCollection<CatalystApproval> approvals;
-  //      private ObservableCollection<AgingProcedure> agingprocedures;
+        //      private ObservableCollection<AgingProcedure> agingprocedures;
 
 
         public AdminWindow()
@@ -64,7 +64,7 @@ namespace catalyst_project.View
         }
         /*
          * History Section
-         */ 
+         */
 
         private void InitHistory()
         {
@@ -87,20 +87,78 @@ namespace catalyst_project.View
             Button btn = (Button)sender;
 
             if (btn.Name == "btn_history_search")
-            { 
-            
+            {
+                if (!String.IsNullOrEmpty(cmb_history_search_by.Text) && !String.IsNullOrWhiteSpace(cmb_history_search_by.Text))
+                {
+                    if (!String.IsNullOrWhiteSpace(txb_history_search_val.Text) && !String.IsNullOrEmpty(txb_history_search_val.Text))
+                    {
+                        if (cmb_history_search_by.Text.Contains("Catalyst ID") && isInt(txb_history_search_val.Text))
+                        {
+                            ObservableCollection<History> historyResult = populateAdminFromDb.searchHistoryResult("select * from History where catalyst_id = " + txb_history_search_val.Text);
+                            grid_history.ItemsSource = historyResult;
+                        }
+                        if (cmb_history_search_by.Text.Contains("User Name"))
+                        {
+                            ObservableCollection<History> historyResult = populateAdminFromDb.searchHistoryResult("select * from History where user_name like '%" + txb_history_search_val.Text + "%'");
+                            grid_history.ItemsSource = historyResult;
+                        }
+                        if (cmb_history_search_by.Text.Contains("Show All"))
+                        {
+                            ObservableCollection<History> historyResult = populateAdminFromDb.searchHistoryResult("select * from History");
+                            grid_history.ItemsSource = historyResult;
+                        }
+                        if (cmb_history_search_by.Text.Contains("Action"))
+                        {
+                            ObservableCollection<History> historyResult = populateAdminFromDb.searchHistoryResult("select * from History where user_action like '%" + txb_history_search_val.Text + "%'");
+                            grid_history.ItemsSource = historyResult;
+                        }
+                        if (cmb_history_search_by.Text.Contains("Group Name"))
+                        {
+                            ObservableCollection<History> historyResult = populateAdminFromDb.searchHistoryResult("select * from History where table_name like '%" + txb_history_search_val.Text + "%'");
+                            grid_history.ItemsSource = historyResult;
+                        }
+                        if (cmb_history_search_by.Text.Contains("Field Name"))
+                        {
+                            ObservableCollection<History> historyResult = populateAdminFromDb.searchHistoryResult("select * from History where field_name like '%" + txb_history_search_val.Text + "%'");
+                            grid_history.ItemsSource = historyResult;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter search value!");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please select search type!");
+                }
             }
 
             if (btn.Name == "btn_history_filter")
-            { 
-            
+            {
+                string dateOne = date_history_from.SelectedDate.Value.ToShortDateString();
+                string dateTwo = date_history_to.SelectedDate.Value.ToShortDateString();
+                ObservableCollection<History> historyResult = populateAdminFromDb.searchHistoryResult("select * from History where modified_date between '" + dateOne + "' and '" + dateTwo + "'");
+                grid_history.ItemsSource = historyResult;
             }
+        }
+
+        public bool isInt(string value)
+        {
+            int result = 0;
+            if (int.TryParse(value, out result))
+            {
+                return true;
+            }
+            return false;
+
         }
         //History section ends here
 
         /*
         * User Section
-        */ 
+        */
         private void InitUser()
         {
             users = new ObservableCollection<User>();
@@ -121,7 +179,7 @@ namespace catalyst_project.View
             {
                 int index = grid_user.SelectedIndex;
                 User selectedUser = new User();
-                selectedUser =  users[grid_user.SelectedIndex];
+                selectedUser = users[grid_user.SelectedIndex];
                 txb_userid.Text = selectedUser.Id.ToString();
                 cmb_userrole.Text = selectedUser.Role;
                 txb_usercode.Text = selectedUser.Code;
@@ -136,7 +194,7 @@ namespace catalyst_project.View
         private void btns_user_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            if (btn.Name == "btn_user_add" && txb_userfirst.Text != "" && cmb_userrole.Text != "" )
+            if (btn.Name == "btn_user_add" && txb_userfirst.Text != "" && cmb_userrole.Text != "")
             {
                 SQLiteCommand cmd_user_add = new SQLiteCommand();
                 cmd_user_add.CommandText = "insert into user (user_role_id, user_code, user_firstname, user_lastname, user_password, user_institute, user_registered) values (@user_role_id, @user_code, @user_firstname, @user_lastname, @user_password, @user_institute, @user_registered)";
@@ -154,19 +212,19 @@ namespace catalyst_project.View
             }
             if (btn.Name == "btn_user_update" && txb_userid.Text != "")
             {
-                 SQLiteCommand cmd_user_update = new SQLiteCommand();
-                 cmd_user_update.CommandText = "update user set user_role_id = @user_role, user_password = @user_password, user_code = @user_code, user_firstname = @user_firstname, user_lastname = @user_lastname, user_institute = @user_institute where user_id = @user_id";
-                 cmd_user_update.Parameters.AddWithValue("@user_role", cmb_userrole.Text == "" ? 0 : cmb_userrole.SelectedValue);
-                 cmd_user_update.Parameters.AddWithValue("@user_code", txb_usercode.Text);
-                 cmd_user_update.Parameters.AddWithValue("@user_firstname", txb_userfirst.Text);
-                 cmd_user_update.Parameters.AddWithValue("@user_lastname", txb_userlast.Text);
-                 cmd_user_update.Parameters.AddWithValue("@user_institute", txb_userinstitute.Text);
-                 cmd_user_update.Parameters.AddWithValue("@user_password", txb_userpass.Text);
-                 cmd_user_update.Parameters.AddWithValue("@user_id", Convert.ToInt32(txb_userid.Text));
-                 dbconnection.Update(cmd_user_update);
-                 users = populateAdminFromDb.LoadUser();
-                 grid_user.ItemsSource = users;
-                 ClearUser();
+                SQLiteCommand cmd_user_update = new SQLiteCommand();
+                cmd_user_update.CommandText = "update user set user_role_id = @user_role, user_password = @user_password, user_code = @user_code, user_firstname = @user_firstname, user_lastname = @user_lastname, user_institute = @user_institute where user_id = @user_id";
+                cmd_user_update.Parameters.AddWithValue("@user_role", cmb_userrole.Text == "" ? 0 : cmb_userrole.SelectedValue);
+                cmd_user_update.Parameters.AddWithValue("@user_code", txb_usercode.Text);
+                cmd_user_update.Parameters.AddWithValue("@user_firstname", txb_userfirst.Text);
+                cmd_user_update.Parameters.AddWithValue("@user_lastname", txb_userlast.Text);
+                cmd_user_update.Parameters.AddWithValue("@user_institute", txb_userinstitute.Text);
+                cmd_user_update.Parameters.AddWithValue("@user_password", txb_userpass.Text);
+                cmd_user_update.Parameters.AddWithValue("@user_id", Convert.ToInt32(txb_userid.Text));
+                dbconnection.Update(cmd_user_update);
+                users = populateAdminFromDb.LoadUser();
+                grid_user.ItemsSource = users;
+                ClearUser();
             }
             if (btn.Name == "btn_user_clear")
             {
@@ -246,7 +304,7 @@ namespace catalyst_project.View
             }
         }
 
-        private void ClearUser() 
+        private void ClearUser()
         {
             txb_userid.Clear();
             cmb_userrole.Text = "";
@@ -256,13 +314,13 @@ namespace catalyst_project.View
             txb_userpass.Clear();
             txb_userinstitute.Clear();
             txb_userdate.Clear();
-        
+
         }
         //User section ends here
 
         /*
          * Manufacturer section
-         */ 
+         */
         private void InitManufacturer()
         {
             manufacs = new ObservableCollection<Manufacturer>();
@@ -338,7 +396,7 @@ namespace catalyst_project.View
 
         /*
          * Monolith Section
-         */ 
+         */
         private void InitMononlith()
         {
             monoliths = new ObservableCollection<MonolithMaterial>();
@@ -412,7 +470,7 @@ namespace catalyst_project.View
 
         /*
          * Shape Section
-         */ 
+         */
         private void InitShape()
         {
             shapes = new ObservableCollection<BoundaryShape>();
@@ -436,7 +494,7 @@ namespace catalyst_project.View
         {
             Button btn = (Button)sender;
 
-            if (btn.Name == "btn_shape_add" && txb_shape.Text != "" )
+            if (btn.Name == "btn_shape_add" && txb_shape.Text != "")
             {
                 SQLiteCommand cmd_shape_add = new SQLiteCommand();
                 cmd_shape_add.CommandText = "insert into substrateboundaryshape (shape) values (@shape)";
@@ -489,7 +547,7 @@ namespace catalyst_project.View
 
         /*
          * Application Field Section
-         */ 
+         */
 
         private void InitApplicationFields()
         {
@@ -565,7 +623,7 @@ namespace catalyst_project.View
 
         /*
          * Aging Procedure Section
-         */ 
+         */
         private void InitAgingProcedures()
         {
             agingprocedures = new ObservableCollection<AgingProcedure>();
@@ -640,14 +698,14 @@ namespace catalyst_project.View
 
         /*
          * Washcoats Section
-         */ 
+         */
 
         private void InitWashcoats()
         {
             washcoats = new ObservableCollection<WashcoatCatalyticComposition>();
             washcoats = populateDropdownsFromDb.populateWashcoats();
             grid_washcoats.ItemsSource = washcoats;
-            
+
         }
 
         private void grid_washcoats_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -715,13 +773,13 @@ namespace catalyst_project.View
             txb_washcoat_id.Clear();
             txb_washcoat.Clear();
             chk_washcoat_metal.IsChecked = false;
-        
+
         }
         //washcoat section ends here
 
         /*
          * Emission Section
-         */ 
+         */
         private void InitEmissions()
         {
             emissions = new ObservableCollection<Emission>();
@@ -795,7 +853,7 @@ namespace catalyst_project.View
 
         /*
          * Transient Section
-         */ 
+         */
         private void InitTransients()
         {
             transients = new ObservableCollection<TransientLegislation>();
@@ -871,7 +929,7 @@ namespace catalyst_project.View
 
         /*
          * Steady Section
-         */ 
+         */
         private void InitSteadys()
         {
             steadys = new ObservableCollection<SteadyStateLegislation>();
@@ -947,7 +1005,7 @@ namespace catalyst_project.View
 
         /*
          * ModelType Section
-         */ 
+         */
         private void InitModelTypes()
         {
             modeltypes = new ObservableCollection<ModelType>();
@@ -1021,7 +1079,7 @@ namespace catalyst_project.View
 
         /*
          * Simulation Tool Section
-         */ 
+         */
         private void InitTools()
         {
             tools = new ObservableCollection<SimulationTool>();
@@ -1101,9 +1159,9 @@ namespace catalyst_project.View
         private void InitBugs()
         {
             bugs = new ObservableCollection<Bug>();
-            bugs = populateAdminFromDb.LoadBugs();
+            bugs = populateAdminFromDb.LoadBugs("select * from bugs");
             grid_bugs.ItemsSource = bugs;
-        
+
         }
         private void grid_bugs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -1113,8 +1171,8 @@ namespace catalyst_project.View
                 selectedBug = bugs[grid_bugs.SelectedIndex];
                 txb_bugs_id.Text = selectedBug.Id.ToString();
                 txb_bugs_catalyst_id.Text = selectedBug.CatalystID.ToString();
-                ckb_bugs_fixed.IsChecked = selectedBug.isFixed;
-                txb_bug_comment.Text = selectedBug.Comment; 
+                ckb_bugs_fixed.IsChecked = Convert.ToBoolean(selectedBug.isFixed);
+                txb_bug_comment.Text = selectedBug.Comment;
             }
         }
         private void btns_bug_Click(object sender, RoutedEventArgs e)
@@ -1129,8 +1187,8 @@ namespace catalyst_project.View
                 cmd_bug_update.Parameters.AddWithValue("@id", Convert.ToInt32(txb_bugs_id.Text));
                 dbconnection.Update(cmd_bug_update);
 
-                bugs = populateAdminFromDb.LoadBugs();
-                grid_bugs.ItemsSource = bugs; 
+                bugs = populateAdminFromDb.LoadBugs("select * from bugs");
+                grid_bugs.ItemsSource = bugs;
             }
             if (btn.Name == "btn_bug_delete")
             {
@@ -1139,122 +1197,100 @@ namespace catalyst_project.View
                 cmd_bug_delete.Parameters.AddWithValue("@id", Convert.ToInt32(txb_bugs_id.Text));
                 dbconnection.Delete(cmd_bug_delete);
 
-                bugs = populateAdminFromDb.LoadBugs();
-                grid_bugs.ItemsSource = bugs; 
+                bugs = populateAdminFromDb.LoadBugs("select * from bugs");
+                grid_bugs.ItemsSource = bugs;
             }
             if (btn.Name == "btn_bugs_search")
-            { 
-                    string selectedVal = cmb_search_bugs_value.Text;
-                    switch(selectedVal){
-                        case "Bug Type": 
-                            ObservableCollection<Bug> searchRes = new ObservableCollection<Bug>();
+            {
+                string selectedVal = cmb_search_bugs_value.Text;
+                switch (selectedVal)
+                {
+                    case "Bug Type":
+                        ObservableCollection<Bug> searchRes = new ObservableCollection<Bug>();
 
-                            for(int i = 0; i < bugs.Count(); i++)
+                        for (int i = 0; i < bugs.Count(); i++)
+                        {
+                            if (bugs[i].BugType.Contains(txb_search_bug_value.Text.Trim()))
                             {
-                                if(bugs[i].BugType == txb_search_bug_value.Text.Trim())
-                                {
-                                    searchRes.Add(bugs[i]);
-                                }
+                                searchRes.Add(bugs[i]);
                             }
+                        }
 
-                            grid_bugs.ItemsSource = searchRes;
-                            break; 
-                        case "Data Group": 
+                        grid_bugs.ItemsSource = searchRes;
+                        break;
+                    case "Data Group":
 
-                            ObservableCollection<Bug> searchRes1 = new ObservableCollection<Bug>();
+                        ObservableCollection<Bug> searchRes1 = new ObservableCollection<Bug>();
 
-                            for(int i = 0; i < bugs.Count(); i++)
+                        for (int i = 0; i < bugs.Count(); i++)
+                        {
+                            if (bugs[i].DataGroup.Contains(txb_search_bug_value.Text.Trim()))
                             {
-                                if(bugs[i].DataGroup == txb_search_bug_value.Text.Trim())
-                                {
-                                    searchRes1.Add(bugs[i]);
-                                }
+                                searchRes1.Add(bugs[i]);
                             }
+                        }
 
-                            grid_bugs.ItemsSource = searchRes1;
-                            break; 
-                        case "Error Field Name":
-                            ObservableCollection<Bug> searchRes2 = new ObservableCollection<Bug>();
+                        grid_bugs.ItemsSource = searchRes1;
+                        break;
+                    case "Error Field Name":
+                        ObservableCollection<Bug> searchRes2 = new ObservableCollection<Bug>();
 
-                            for(int i = 0; i < bugs.Count(); i++)
+                        for (int i = 0; i < bugs.Count(); i++)
+                        {
+                            if (bugs[i].ErrorFieldName.Contains(txb_search_bug_value.Text.Trim()))
                             {
-                                if(bugs[i].ErrorFieldName == txb_search_bug_value.Text.Trim())
-                                {
-                                    searchRes2.Add(bugs[i]);
-                                }
+                                searchRes2.Add(bugs[i]);
                             }
+                        }
 
-                            grid_bugs.ItemsSource = searchRes2;
-                            break; 
-                        case "Fixed": 
-                            ObservableCollection<Bug> searchRes3 = new ObservableCollection<Bug>();
+                        grid_bugs.ItemsSource = searchRes2;
+                        break;
+                    case "Fixed":
+                        ObservableCollection<Bug> searchRes3 = new ObservableCollection<Bug>();
 
-                            for(int i = 0; i < bugs.Count(); i++)
+                        for (int i = 0; i < bugs.Count(); i++)
+                        {
+                            if (Convert.ToBoolean(bugs[i].isFixed) == true)
                             {
-                                if(bugs[i].isFixed == true)
-                                {
-                                    searchRes3.Add(bugs[i]);
-                                }
+                                searchRes3.Add(bugs[i]);
                             }
+                        }
 
-                            grid_bugs.ItemsSource = searchRes3;
-                            break;
-                        case "Not Fixed": 
-                            ObservableCollection<Bug> searchRes4 = new ObservableCollection<Bug>();
+                        grid_bugs.ItemsSource = searchRes3;
+                        break;
+                    case "Not Fixed":
+                        ObservableCollection<Bug> searchRes4 = new ObservableCollection<Bug>();
 
-                            for(int i = 0; i < bugs.Count(); i++)
+                        for (int i = 0; i < bugs.Count(); i++)
+                        {
+                            if (Convert.ToBoolean(bugs[i].isFixed) == false)
                             {
-                                if(bugs[i].isFixed == true)
-                                {
-                                    searchRes4.Add(bugs[i]);
-                                }
+                                searchRes4.Add(bugs[i]);
                             }
+                        }
 
-                            grid_bugs.ItemsSource = searchRes4;
-                            break; 
-                        case "Show All":
-                            grid_bugs.ItemsSource = bugs; 
-                            break;
-                    }
+                        grid_bugs.ItemsSource = searchRes4;
+                        break;
+                    case "Show All":
+                        grid_bugs.ItemsSource = bugs;
+                        break;
+                }
             }
             if (btn.Name == "btn_bugs_filter")
-            { 
-            
-            }
-        }
-        private void cmb_search_bugs_value_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string selectedVal = cmb_search_bugs_value.Text;
-            switch (selectedVal)
             {
-                case "Bug Type":
-                    txb_search_bug_value.IsEnabled = true;
-                    break;
-                case "Data Group":
-                    txb_search_bug_value.IsEnabled = true;
-                    break;
-                case "Error Field Name":
-                    txb_search_bug_value.IsEnabled = true;
-                    break;
-                case "Fixed":
-                    txb_search_bug_value.IsEnabled = false;
-                    break;
-                case "Not Fixed":
-                    txb_search_bug_value.IsEnabled = false;
-                    ;
-                    break;
-                case "Show All":
-                    txb_search_bug_value.IsEnabled = false;
-                    break;
-            }
+                string dateone = date_bug_from.SelectedDate.Value.ToShortDateString();
+                string datetwo = date_bug_to.SelectedDate.Value.ToShortDateString();
+                bugs = populateAdminFromDb.LoadBugs("select * from bugs where bug_detected_date between '" + dateone + "' and '" +datetwo + "'");
+                grid_bugs.ItemsSource = bugs;
 
+            }
         }
 
         //Bugs section ends here
 
         /*
          * Data approval section
-         */ 
+         */
         private void InitApprovals()
         {
             approvals = new ObservableCollection<CatalystApproval>();
@@ -1292,7 +1328,7 @@ namespace catalyst_project.View
             {
                 ClearData();
             }
-        
+
         }
         private void ClearData()
         {
@@ -1301,6 +1337,6 @@ namespace catalyst_project.View
             txb_review_comment.Clear();
         }
 
-        
+
     }
 }

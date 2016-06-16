@@ -19,6 +19,7 @@
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <Label Content="Search By" Width="200"></Label>
                             <ComboBox Width="200" Name="cmb_history_search_by" >
+                                <ComboBoxItem Content="Show All"/>
                                 <ComboBoxItem Content="Catalyst ID"/>
                                 <ComboBoxItem Content="User Name"/>
                                 <ComboBoxItem Content="Action"/>
@@ -562,8 +563,9 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
                         <DataGrid Height="720" Margin="10"  Grid.Column="0" Grid.Row="0" Name="grid_datas" SelectionChanged="grid_datas_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Catalyst ID" Width="100" Binding="{Binding Catalyst_id}" />
-                                <DataGridCheckBoxColumn Header="Is Approved" Width="150" Binding="{Binding Is_Approved}" />
+                                <DataGridTextColumn Header="Catalyst ID" Width="75" Binding="{Binding Catalyst_id}" />
+                                <DataGridCheckBoxColumn Header="Is Approved" Width="75" Binding="{Binding Is_Approved}" />
+                                <DataGridTextColumn Header="Updated Date"  Width="100" Binding="{Binding Modified_Date}" />
                                 <DataGridTextColumn Header="Review Comment"  Width="350" Binding="{Binding Review_Comment}" />
                             </DataGrid.Columns>
                         </DataGrid>
@@ -579,7 +581,9 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Label Content="Review Comment" Width="200"/>
-                            <TextBox Width="300" Name="txb_review_comment"  Height="300" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility ="Auto">
+                                <TextBox Width="300" Name="txb_review_comment"  Height="550" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                           </ScrollViewer>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <Button Content="Update" Name="btn_data_update" Margin="5" Width="50" Height="30" Background="LightBlue" Click="btns_data_Click"/>
@@ -602,7 +606,7 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <Label Content="Search By" Width="200"></Label>
-                            <ComboBox Name="cmb_search_bugs_value" Width="200" SelectionChanged="cmb_search_bugs_value_SelectionChanged">
+                            <ComboBox Name="cmb_search_bugs_value" Width="200" >
                                 <ComboBoxItem Content="Bug Type"/>
                                 <ComboBoxItem Content="Data Group"/>
                                 <ComboBoxItem Content="Error Field Name"/>
@@ -622,7 +626,7 @@
                     </StackPanel>
                     <Border BorderThickness="5" Grid.Column="0" Grid.Row="1" BorderBrush="LightBlue">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Width="1120">
-                            <DataGrid Grid.Column="0" Grid.Row="1"  Height="480" Margin="10" Name="grid_bugs" SelectionChanged="grid_bugs_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <DataGrid Grid.Column="0" Grid.Row="1"  Height="450" Margin="10" Name="grid_bugs" SelectionChanged="grid_bugs_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}" />
                                     <DataGridTextColumn Header="Catalyst ID" Width="70" Binding="{Binding CatalystID}"/>
@@ -655,8 +659,10 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="10">
                             <Label Content="Comment" Width="150"/>
-                            <TextBox Width="500" Name="txb_bug_comment" Height="120" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" IsEnabled="False"/>
-                        </StackPanel>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"> 
+                                <TextBox Width="500" Name="txb_bug_comment" Height="120" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" IsEnabled="False"/>
+                            </ScrollViewer>
+                      </StackPanel>
                         <StackPanel Margin="10" Orientation="Vertical" >
                             <Button Content="Update" Name="btn_bug_update" Width="80" Height="30" Margin="5"  Background="LightBlue" Click="btns_bug_Click"/>
                             <Button Content="Delete" Name="btn_bug_delete" Width="80" Height="30" Margin="5" Background="Red" Click="btns_bug_Click"/>
